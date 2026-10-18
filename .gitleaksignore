@@ -1,0 +1,3 @@
+# Gitleaks ignore list for false positive findings
+# graphify-out cache SHA256 checksums
+aed2388d09256eebd404e5b68a82ddbc37cf8533:graphify-out/cache/stat-index.json:generic-api-key:1

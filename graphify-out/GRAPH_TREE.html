@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>/ — graphify tree viewer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      margin: 20px 0 0 24px;
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #1e3a56;
+    }
+    .controls {
+      margin: 20px 0 15px 24px;
+    }
+    button {
+      margin-right: 10px;
+      padding: 8px 18px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s ease-in-out;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    button:active {
+      background: #004085;
+    }
+    #tree-container {
+      width: calc(100vw - 48px); /* Adjust for body margin/padding */
+      height: 85vh;
+      overflow: auto;
+      border-radius: 8px;
+      background: #fff;
+      margin-left: 24px;
+      margin-right: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border: 1px solid #ddd;
+    }
+    svg {
+      background: #fff;
+      border-radius: 8px;
+      display: block; /* Important for D3 */
+    }
+    .node circle {
+      stroke-width: 2.5px;
+    }
+    .node text { /* Base style for the <text> container */
+      font: 13px 'Segoe UI', sans-serif;
+      paint-order: stroke fill; /* Ensures text is readable over lines */
+      stroke: #fff; /* White halo */
+      stroke-width: 3px; /* Halo thickness */
+      stroke-linejoin: round;
+      stroke-opacity: 0.85; /* Halo opacity */
+    }
+    .link {
+      fill: none;
+      stroke-opacity: 0.7;
+      stroke-width: 2px;
+    }
+  </style>
+</head>
+<body>
+  <h1>/ — Knowledge Graph</h1>
+  <div class="controls">
+    <button onclick="expandAll()">Expand All</button>
+    <button onclick="collapseAll()">Collapse All</button>
+    <button onclick="resetView()">Reset View</button>
+  </div>
+  <div id="tree-container">
+    <svg id="tree-svg" width="6000" height="8000"></svg>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+    const initialJsonData = {"name":"/","total_count":481,"children":[{"name":"backend","total_count":276,"children":[{"name":"app","total_count":202,"children":[{"name":"agents","total_count":69,"children":[{"name":"assistant.py","total_count":2,"children":[{"name":"answer_course_query()","total_count":1,"children":[]},{"name":"Answers lecturer inquiries strictly grounded in course documents and past\u2026","total_count":1,"children":[]}]},{"name":"blueprint.py","total_count":3,"children":[{"name":"BlueprintResponse","total_count":1,"children":[]},{"name":"Executes the Blueprint Agent: 1. Reads assessment requirements, course CLOs and\u2026","total_count":1,"children":[]},{"name":"run_blueprint_agent()","total_count":1,"children":[]}]},{"name":"doc_intel.py","total_count":4,"children":[{"name":"DocIntelResult","total_count":1,"children":[]},{"name":"Executes the DocIntel Agent to process course documents, extract CLOs & topics,\u2026","total_count":1,"children":[]},{"name":"ExtractedPastQuestion","total_count":1,"children":[]},{"name":"run_doc_intel_extraction()","total_count":1,"children":[]}]},{"name":"item_writer.py","total_count":5,"children":[{"name":"CellItemsResponse","total_count":1,"children":[]},{"name":"Executes the Item Writer Agent: 1. Loads assessment and blueprint cells. 2.\u2026","total_count":1,"children":[]},{"name":"GeneratedItemSchema","total_count":1,"children":[]},{"name":"GeneratedOption","total_count":1,"children":[]},{"name":"run_item_writer_agent()","total_count":1,"children":[]}]},{"name":"moderation.py","total_count":3,"children":[{"name":"Moderation Agent: Performs comprehensive academic quality assurance,\u2026","total_count":1,"children":[]},{"name":"ModerationAgentOutput","total_count":1,"children":[]},{"name":"run_moderation_agent()","total_count":1,"children":[]}]},{"name":"orchestrator.py","total_count":9,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":".is_connected()","total_count":1,"children":[]},{"name":".query()","total_count":1,"children":[]},{"name":"AgentEngineClient","total_count":1,"children":[]},{"name":"Client for Vertex AI Reasoning Engines / Agent Engine. Enables remote execution\u2026","total_count":1,"children":[]},{"name":"execute_workflow_stage()","total_count":1,"children":[]},{"name":"Executes a discrete stage of the assessment copilot workflow. Routes execution\u2026","total_count":1,"children":[]},{"name":"Executes the entire end-to-end 5-stage assessment pipeline: Blueprint -> 2.5x\u2026","total_count":1,"children":[]},{"name":"run_full_assessment_pipeline()","total_count":1,"children":[]}]},{"name":"prompts","total_count":34,"children":[{"name":"assistant.md","total_count":3,"children":[{"name":"Knowledge Assistant Agent Prompt (v1.0)","total_count":1,"children":[]},{"name":"Knowledge Assistant Agent Prompt (v1.0)","total_count":1,"children":[]},{"name":"Strict Grounding Rules","total_count":1,"children":[]}]},{"name":"blueprint.md","total_count":4,"children":[{"name":"Blueprint Agent Prompt (v1.0)","total_count":1,"children":[]},{"name":"Blueprint Agent Prompt (v1.0)","total_count":1,"children":[]},{"name":"Output Format","total_count":1,"children":[]},{"name":"Strict Rules & Constraints","total_count":1,"children":[]}]},{"name":"doc_intel.md","total_count":4,"children":[{"name":"DocIntel Agent Prompt (v1.0)","total_count":1,"children":[]},{"name":"DocIntel Agent Prompt (v1.0)","total_count":1,"children":[]},{"name":"Formatting Rules","total_count":1,"children":[]},{"name":"Instructions","total_count":1,"children":[]}]},{"name":"item_writer.md","total_count":7,"children":[{"name":"Cognitive & Difficulty Calibration","total_count":1,"children":[]},{"name":"Item Writer Agent Prompt (v1.0)","total_count":1,"children":[]},{"name":"Item Writer Agent Prompt (v1.0)","total_count":1,"children":[]},{"name":"Key Operational Directive: 2.5\u00d7 Candidate Pool","total_count":1,"children":[]},{"name":"Mandatory Grounding in Course Materials","total_count":1,"children":[]},{"name":"Strict MCQ Quality Guidelines (Academic Quality Assurance)","total_count":1,"children":[]},{"name":"Structured Short Answer Guidelines","total_count":1,"children":[]}]},{"name":"moderation.md","total_count":5,"children":[{"name":"Inputs","total_count":1,"children":[]},{"name":"Moderation Agent Instructions","total_count":1,"children":[]},{"name":"Moderation Agent Instructions","total_count":1,"children":[]},{"name":"Output Schema","total_count":1,"children":[]},{"name":"Responsibilities","total_count":1,"children":[]}]},{"name":"reviewer.md","total_count":5,"children":[{"name":"Audit & Discrepancy Flagging Criteria","total_count":1,"children":[]},{"name":"Output Format","total_count":1,"children":[]},{"name":"Reviewer Agent Prompt (v1.0)","total_count":1,"children":[]},{"name":"Reviewer Agent Prompt (v1.0)","total_count":1,"children":[]},{"name":"Two-Model Pattern: Independent Zero-Shot Solve","total_count":1,"children":[]}]},{"name":"solver.md","total_count":6,"children":[{"name":"Academic Equivalence Bounds","total_count":1,"children":[]},{"name":"Multi-Version Paper Assembly Solver Documentation (v1.0)","total_count":1,"children":[]},{"name":"Multi-Version Paper Assembly Solver Documentation (v1.0)","total_count":1,"children":[]},{"name":"Objective Function: Difficulty Balance","total_count":1,"children":[]},{"name":"Problem Formulation & Constraints","total_count":1,"children":[]},{"name":"Strict Optimization Constraints","total_count":1,"children":[]}]}]},{"name":"reviewer.py","total_count":7,"children":[{"name":"check_item_quality_flaws()","total_count":1,"children":[]},{"name":"Checks for common item writing flaws: - Lowercase negative phrasing (\"not\",\u2026","total_count":1,"children":[]},{"name":"Executes the Adversarial Reviewer Agent: 1. Independent Zero-Shot Solve: solves\u2026","total_count":1,"children":[]},{"name":"Independent Zero-Shot Solver: Solves question without access to author's answer\u2026","total_count":1,"children":[]},{"name":"run_reviewer_agent()","total_count":1,"children":[]},{"name":"solve_item_zero_shot()","total_count":1,"children":[]},{"name":"SolverOutput","total_count":1,"children":[]}]},{"name":"solver.py","total_count":2,"children":[{"name":"Executes the Multi-Version Solver Agent: 1. Loads assessment, blueprint,\u2026","total_count":1,"children":[]},{"name":"run_solver_agent()","total_count":1,"children":[]}]}]},{"name":"api","total_count":34,"children":[{"name":"analytics.py","total_count":1,"children":[{"name":"get_analytics_summary()","total_count":1,"children":[]}]},{"name":"assessments.py","total_count":3,"children":[{"name":"create_assessment()","total_count":1,"children":[]},{"name":"get_assessment()","total_count":1,"children":[]},{"name":"list_assessments()","total_count":1,"children":[]}]},{"name":"assistant.py","total_count":3,"children":[{"name":"ask_assistant()","total_count":1,"children":[]},{"name":"AssistantAnswer","total_count":1,"children":[]},{"name":"AssistantQuestion","total_count":1,"children":[]}]},{"name":"blueprints.py","total_count":3,"children":[{"name":"generate_blueprint()","total_count":1,"children":[]},{"name":"get_blueprint()","total_count":1,"children":[]},{"name":"update_blueprint()","total_count":1,"children":[]}]},{"name":"courses.py","total_count":4,"children":[{"name":"create_course()","total_count":1,"children":[]},{"name":"get_course()","total_count":1,"children":[]},{"name":"list_courses()","total_count":1,"children":[]},{"name":"update_course_outcomes()","total_count":1,"children":[]}]},{"name":"documents.py","total_count":3,"children":[{"name":"list_documents()","total_count":1,"children":[]},{"name":"trigger_extraction()","total_count":1,"children":[]},{"name":"upload_document()","total_count":1,"children":[]}]},{"name":"exports.py","total_count":1,"children":[{"name":"export_assessment()","total_count":1,"children":[]}]},{"name":"flags.py","total_count":3,"children":[{"name":"list_flags()","total_count":1,"children":[]},{"name":"resolve_flag()","total_count":1,"children":[]},{"name":"review_assessment()","total_count":1,"children":[]}]},{"name":"items.py","total_count":3,"children":[{"name":"generate_item_pool()","total_count":1,"children":[]},{"name":"list_items()","total_count":1,"children":[]},{"name":"patch_item()","total_count":1,"children":[]}]},{"name":"moderation.py","total_count":5,"children":[{"name":"add_moderation_comment()","total_count":1,"children":[]},{"name":"generate_moderation_pack()","total_count":1,"children":[]},{"name":"get_moderation_record()","total_count":1,"children":[]},{"name":"HumanCommentRequest","total_count":1,"children":[]},{"name":"submit_moderation_decision()","total_count":1,"children":[]}]},{"name":"runs.py","total_count":1,"children":[{"name":"get_run_trace()","total_count":1,"children":[]}]},{"name":"versions.py","total_count":4,"children":[{"name":"get_equivalence_report()","total_count":1,"children":[]},{"name":"get_version_items()","total_count":1,"children":[]},{"name":"list_versions()","total_count":1,"children":[]},{"name":"trigger_assembly()","total_count":1,"children":[]}]}]},{"name":"auth.py","total_count":5,"children":[{"name":"Dependency factory to enforce role-based access control.","total_count":1,"children":[]},{"name":"Extracts and validates the current user. Supports Firebase ID tokens and\u2026","total_count":1,"children":[]},{"name":"get_current_user()","total_count":1,"children":[]},{"name":"require_role()","total_count":1,"children":[]},{"name":"role_checker()","total_count":1,"children":[]}]},{"name":"config.py","total_count":1,"children":[{"name":"Settings","total_count":1,"children":[]}]},{"name":"main.py","total_count":5,"children":[{"name":"health_check()","total_count":1,"children":[]},{"name":"lifespan()","total_count":1,"children":[]},{"name":"log_requests()","total_count":1,"children":[]},{"name":"root()","total_count":1,"children":[]},{"name":"seed_default_data()","total_count":1,"children":[]}]},{"name":"models.py","total_count":29,"children":[{"name":"Assessment","total_count":1,"children":[]},{"name":"AssessmentCreate","total_count":1,"children":[]},{"name":"AuditEntry","total_count":1,"children":[]},{"name":"Blueprint","total_count":1,"children":[]},{"name":"BlueprintCell","total_count":1,"children":[]},{"name":"CLO","total_count":1,"children":[]},{"name":"Comment","total_count":1,"children":[]},{"name":"Course","total_count":1,"children":[]},{"name":"CourseCreate","total_count":1,"children":[]},{"name":"CourseOutcomesUpdate","total_count":1,"children":[]},{"name":"current_time_iso()","total_count":1,"children":[]},{"name":"Document","total_count":1,"children":[]},{"name":"EquivalenceReport","total_count":1,"children":[]},{"name":"Flag","total_count":1,"children":[]},{"name":"FlagResolutionRequest","total_count":1,"children":[]},{"name":"generate_id()","total_count":1,"children":[]},{"name":"Item","total_count":1,"children":[]},{"name":"ItemUpdate","total_count":1,"children":[]},{"name":"ModerationDecisionRequest","total_count":1,"children":[]},{"name":"ModerationItem","total_count":1,"children":[]},{"name":"ModerationRecord","total_count":1,"children":[]},{"name":"Option","total_count":1,"children":[]},{"name":"PaperVersion","total_count":1,"children":[]},{"name":"PastItem","total_count":1,"children":[]},{"name":"RunStep","total_count":1,"children":[]},{"name":"RunTrace","total_count":1,"children":[]},{"name":"SourceCitation","total_count":1,"children":[]},{"name":"Topic","total_count":1,"children":[]},{"name":"User","total_count":1,"children":[]}]},{"name":"services","total_count":16,"children":[{"name":"audit.py","total_count":1,"children":[{"name":"log_audit()","total_count":1,"children":[]}]},{"name":"firestore.py","total_count":10,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":"._init_client()","total_count":1,"children":[]},{"name":".delete()","total_count":1,"children":[]},{"name":".get()","total_count":1,"children":[]},{"name":".is_cloud()","total_count":1,"children":[]},{"name":".query()","total_count":1,"children":[]},{"name":".set()","total_count":1,"children":[]},{"name":".update()","total_count":1,"children":[]},{"name":"FirestoreService","total_count":1,"children":[]},{"name":"Query documents in a collection. filters: list of (field, op, value) e.g.\u2026","total_count":1,"children":[]}]},{"name":"traces.py","total_count":5,"children":[{"name":".complete_run()","total_count":1,"children":[]},{"name":".create_run()","total_count":1,"children":[]},{"name":".record_step()","total_count":1,"children":[]},{"name":"Manages agent execution runs and fine-grained step recording. Feeds the Agent\u2026","total_count":1,"children":[]},{"name":"RunTracker","total_count":1,"children":[]}]}]},{"name":"tools","total_count":43,"children":[{"name":"blueprint_rules.py","total_count":4,"children":[{"name":"Deterministically repairs blueprint cells to satisfy: 1. Exact target marks. 2.\u2026","total_count":1,"children":[]},{"name":"Pure Python deterministic validation of assessment blueprint. Rules: 1. Total\u2026","total_count":1,"children":[]},{"name":"repair_blueprint()","total_count":1,"children":[]},{"name":"validate_blueprint()","total_count":1,"children":[]}]},{"name":"events.py","total_count":5,"children":[{"name":"_insert()","total_count":1,"children":[]},{"name":"Emits a structured telemetry event to BigQuery and in-memory buffer. Fire-and-\u2026","total_count":1,"children":[]},{"name":"get_all_events()","total_count":1,"children":[]},{"name":"get_bq_client()","total_count":1,"children":[]},{"name":"log_event()","total_count":1,"children":[]}]},{"name":"exporters.py","total_count":14,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":".draw_footer()","total_count":1,"children":[]},{"name":".save()","total_count":1,"children":[]},{"name":".showPage()","total_count":1,"children":[]},{"name":"NumberedCanvas","total_count":1,"children":[]},{"name":"render_clo_matrix_csv()","total_count":1,"children":[]},{"name":"render_exam_pdf()","total_count":1,"children":[]},{"name":"render_marking_guide_pdf()","total_count":1,"children":[]},{"name":"render_moodle_xml()","total_count":1,"children":[]},{"name":"Renders a comprehensive CSV matrix documenting item-level CLO, Bloom taxonomy,\u2026","total_count":1,"children":[]},{"name":"Renders an official, confidential Examiner's Marking Guide & Model Solutions\u2026","total_count":1,"children":[]},{"name":"Renders an official, print-ready examination paper PDF using ReportLab.\u2026","total_count":1,"children":[]},{"name":"Renders valid Moodle XML format (\u003cquiz>) containing multichoice and\u2026","total_count":1,"children":[]},{"name":"Two-pass canvas to dynamically compute and render total page count and footer.","total_count":1,"children":[]}]},{"name":"parsing.py","total_count":8,"children":[{"name":"extract_document_text()","total_count":1,"children":[]},{"name":"Fallback OCR processor using Google Cloud Document AI for scanned documents.\u2026","total_count":1,"children":[]},{"name":"parse_docx()","total_count":1,"children":[]},{"name":"parse_pdf_plumber()","total_count":1,"children":[]},{"name":"parse_with_document_ai_ocr()","total_count":1,"children":[]},{"name":"Parses digital PDF content using pdfplumber. Returns (extracted_text,\u2026","total_count":1,"children":[]},{"name":"Parses Word .docx documents.","total_count":1,"children":[]},{"name":"Primary extraction entrypoint: 1. For text/markdown, directly decodes UTF-8. 2.\u2026","total_count":1,"children":[]}]},{"name":"search.py","total_count":3,"children":[{"name":"get_discovery_client()","total_count":1,"children":[]},{"name":"Queries Vertex AI Search data store for the course. Returns ranked list of\u2026","total_count":1,"children":[]},{"name":"search_knowledge_base()","total_count":1,"children":[]}]},{"name":"similarity.py","total_count":7,"children":[{"name":"compute_embedding()","total_count":1,"children":[]},{"name":"Computes cosine similarity between two float vectors.","total_count":1,"children":[]},{"name":"Computes text embedding vector using Vertex AI text-embedding-004 or local\u2026","total_count":1,"children":[]},{"name":"cosine_similarity()","total_count":1,"children":[]},{"name":"find_similar_items()","total_count":1,"children":[]},{"name":"get_genai_client()","total_count":1,"children":[]},{"name":"Scans candidates against target_text and target_embedding. Returns list of\u2026","total_count":1,"children":[]}]},{"name":"solver.py","total_count":2,"children":[{"name":"assemble_paper_versions()","total_count":1,"children":[]},{"name":"Assembles multiple provably equivalent examination versions with zero item\u2026","total_count":1,"children":[]}]}]}]},{"name":"pyproject.toml","total_count":1,"children":[{"name":"assesscraft-backend","total_count":1,"children":[]}]},{"name":"requirements.txt","total_count":1,"children":[{"name":"requirements.txt","total_count":1,"children":[]}]},{"name":"scripts","total_count":1,"children":[{"name":"eval_reviewer.py","total_count":1,"children":[{"name":"run_evaluation()","total_count":1,"children":[]}]}]},{"name":"seed","total_count":35,"children":[{"name":"lecture_notes_indexing.md","total_count":6,"children":[{"name":"1. Storage Hierarchy and Access Costs","total_count":1,"children":[]},{"name":"2. B+ Tree Structure & Invariants","total_count":1,"children":[]},{"name":"3. Clustered vs. Unclustered Indexes","total_count":1,"children":[]},{"name":"4. Query Optimizer Rules of Thumb","total_count":1,"children":[]},{"name":"CS2040 Lecture Notes: B+ Tree Indexing and Query Performance","total_count":1,"children":[]},{"name":"CS2040 Lecture Notes: B+ Tree Indexing and Query Performance","total_count":1,"children":[]}]},{"name":"lecture_notes_transactions.md","total_count":7,"children":[{"name":"1. Transaction Concept and ACID Properties","total_count":1,"children":[]},{"name":"2. Concurrency Anomalies","total_count":1,"children":[]},{"name":"3. ANSI SQL Isolation Levels","total_count":1,"children":[]},{"name":"4. Conflict Serializability & Precedence Graphs","total_count":1,"children":[]},{"name":"5. Two-Phase Locking (2PL)","total_count":1,"children":[]},{"name":"CS2040 Lecture Notes: Transactions and Concurrency Control","total_count":1,"children":[]},{"name":"CS2040 Lecture Notes: Transactions and Concurrency Control","total_count":1,"children":[]}]},{"name":"load_seed.py","total_count":1,"children":[{"name":"seed_database()","total_count":1,"children":[]}]},{"name":"past_paper_2023.md","total_count":3,"children":[{"name":"CS2040 Database Systems \u2014 Final Examination (2023)","total_count":1,"children":[]},{"name":"CS2040 Database Systems \u2014 Final Examination (2023)","total_count":1,"children":[]},{"name":"Section A: Multiple Choice Questions (30 Marks \u2014 15 Questions)","total_count":1,"children":[]}]},{"name":"past_paper_2024.md","total_count":3,"children":[{"name":"CS2040 Database Systems \u2014 Final Examination (2024)","total_count":1,"children":[]},{"name":"CS2040 Database Systems \u2014 Final Examination (2024)","total_count":1,"children":[]},{"name":"Section A: Multiple Choice Questions (30 Marks \u2014 15 Questions)","total_count":1,"children":[]}]},{"name":"past_paper_2025.md","total_count":3,"children":[{"name":"CS2040 Database Systems \u2014 Final Examination (2025)","total_count":1,"children":[]},{"name":"CS2040 Database Systems \u2014 Final Examination (2025)","total_count":1,"children":[]},{"name":"Section A: Multiple Choice Questions (30 Marks \u2014 15 Questions)","total_count":1,"children":[]}]},{"name":"qa_manual_excerpt.md","total_count":6,"children":[{"name":"4.1 Assessment Blueprinting","total_count":1,"children":[]},{"name":"4.2 Repeat and Supplementary Examination Equivalence","total_count":1,"children":[]},{"name":"4.3 External Moderation Protocols","total_count":1,"children":[]},{"name":"Academic Quality Assurance Manual (Examinations & Assessments)","total_count":1,"children":[]},{"name":"Academic Quality Assurance Manual (Examinations & Assessments)","total_count":1,"children":[]},{"name":"Section 4: Examination Paper Construction & Equivalence Standards","total_count":1,"children":[]}]},{"name":"syllabus_cs2040.md","total_count":6,"children":[{"name":"1. Course Description","total_count":1,"children":[]},{"name":"2. Course Learning Outcomes (CLOs)","total_count":1,"children":[]},{"name":"3. Weekly Curricular Topics","total_count":1,"children":[]},{"name":"4. Assessment Scheme","total_count":1,"children":[]},{"name":"CS2040: Database Systems \u2014 Course Syllabus","total_count":1,"children":[]},{"name":"CS2040: Database Systems \u2014 Course Syllabus","total_count":1,"children":[]}]}]},{"name":"tests","total_count":36,"children":[{"name":"test_health.py","total_count":4,"children":[{"name":"test_analytics_summary()","total_count":1,"children":[]},{"name":"test_courses_list_and_seed()","total_count":1,"children":[]},{"name":"test_health_endpoint()","total_count":1,"children":[]},{"name":"test_root_endpoint()","total_count":1,"children":[]}]},{"name":"test_milestone2.py","total_count":5,"children":[{"name":"test_assistant_api_endpoint()","total_count":1,"children":[]},{"name":"test_knowledge_assistant_outer_joins_query()","total_count":1,"children":[]},{"name":"test_knowledge_assistant_qa_manual_repeat_paper()","total_count":1,"children":[]},{"name":"test_seed_database_execution()","total_count":1,"children":[]},{"name":"test_text_parsing_markdown_and_plain()","total_count":1,"children":[]}]},{"name":"test_milestone3.py","total_count":4,"children":[{"name":"setup_test_data()","total_count":1,"children":[]},{"name":"test_api_milestone3_workflow()","total_count":1,"children":[]},{"name":"test_blueprint_agent_and_rules()","total_count":1,"children":[]},{"name":"test_item_writer_agent_and_grounding()","total_count":1,"children":[]}]},{"name":"test_milestone4.py","total_count":4,"children":[{"name":"setup_test_data()","total_count":1,"children":[]},{"name":"test_reviewer_api_workflow_and_flag_resolution()","total_count":1,"children":[]},{"name":"test_reviewer_key_mismatch_and_flaw_detection()","total_count":1,"children":[]},{"name":"test_reviewer_past_exam_and_pool_duplicate_detection()","total_count":1,"children":[]}]},{"name":"test_milestone5.py","total_count":5,"children":[{"name":"create_mock_blueprint_and_pool()","total_count":1,"children":[]},{"name":"setup_test_data()","total_count":1,"children":[]},{"name":"test_ortools_cp_sat_assembly_zero_overlap()","total_count":1,"children":[]},{"name":"test_ortools_exclusion_of_rejected_items()","total_count":1,"children":[]},{"name":"test_solver_agent_and_api_workflow()","total_count":1,"children":[]}]},{"name":"test_milestone6.py","total_count":7,"children":[{"name":"setup_seed_data()","total_count":1,"children":[]},{"name":"Test all 4 assessment export formats: PDF, marking guide, Moodle XML, and CLO\u2026","total_count":1,"children":[]},{"name":"Test Moderation Agent execution, checklist synthesis, and AI comments.","total_count":1,"children":[]},{"name":"Test RBAC enforcement: only moderator role can approve papers.","total_count":1,"children":[]},{"name":"test_exports_all_formats()","total_count":1,"children":[]},{"name":"test_moderation_agent_generation()","total_count":1,"children":[]},{"name":"test_moderation_rbac_and_decision()","total_count":1,"children":[]}]},{"name":"test_milestone7.py","total_count":7,"children":[{"name":"setup_seed_data()","total_count":1,"children":[]},{"name":"Test AGENT_RUNTIME configuration toggle resilience.","total_count":1,"children":[]},{"name":"Test BigQuery telemetry aggregation and recentEvents stream.","total_count":1,"children":[]},{"name":"Test Orchestrator sequential stage execution and event recording.","total_count":1,"children":[]},{"name":"test_agent_engine_runtime_flag()","total_count":1,"children":[]},{"name":"test_analytics_summary_with_real_events()","total_count":1,"children":[]},{"name":"test_orchestrator_stage_execution()","total_count":1,"children":[]}]}]}]},{"name":"docs","total_count":32,"children":[{"name":"DECISIONS.md","total_count":17,"children":[{"name":"ADR 005: Deterministic Blueprint Rules Engine & Automated Self-Repair Loop","total_count":1,"children":[]},{"name":"ADR 006: 2.5\u00d7 Candidate Pool Multiplier, Distractor Rationales & Grounding Citations","total_count":1,"children":[]},{"name":"ADR 007: Adversarial Reviewer, Zero-Shot Independent Solve & Vector Duplicate Detection","total_count":1,"children":[]},{"name":"ADR 008: Multi-Version Examination Assembly via OR-Tools CP-SAT & Equivalence Bounds","total_count":1,"children":[]},{"name":"ADR 009: Institutional Moderation Governance, Role-Based Approval & Multi-Format Assessment Exports","total_count":1,"children":[]},{"name":"ADR 010: BigQuery Telemetry, Dual Agent Engine Runtime & Evaluator Polish","total_count":1,"children":[]},{"name":"AssessCraft AI \u2014 Architecture Decisions & Log","total_count":1,"children":[]},{"name":"AssessCraft AI \u2014 Architecture Decisions & Log","total_count":1,"children":[]},{"name":"DECISION-001: Model Selection & Google GenAI SDK","total_count":1,"children":[]},{"name":"DECISION-002: Multi-Agent Architecture with ADK","total_count":1,"children":[]},{"name":"DECISION-003: Deterministic Constraint Satisfaction with OR-Tools","total_count":1,"children":[]},{"name":"DECISION-004: Region and Service Locality","total_count":1,"children":[]},{"name":"DECISION-005: Authentication and Role-Based Access Control","total_count":1,"children":[]},{"name":"DECISION-006: Local & Offline Resilience","total_count":1,"children":[]},{"name":"DECISION-007: Document Ingestion Hierarchy & OCR Fallback","total_count":1,"children":[]},{"name":"DECISION-008: Grounded Citation Engine & Knowledge Assistant","total_count":1,"children":[]},{"name":"DECISION-009: Reviewer Accuracy Benchmark (Pitch Metric)","total_count":1,"children":[]}]},{"name":"DEMO_SCRIPT.md","total_count":15,"children":[{"name":"5-Minute Evaluation Walkthrough","total_count":1,"children":[]},{"name":"Act 1: Evaluator Fast-Track & Role Verification (30 Seconds)","total_count":1,"children":[]},{"name":"Act 2: Grounded Knowledge Assistant (45 Seconds)","total_count":1,"children":[]},{"name":"Act 3: Deterministic Blueprint Generation (45 Seconds)","total_count":1,"children":[]},{"name":"Act 4: Candidate Pool & Adversarial Reviewer (60 Seconds)","total_count":1,"children":[]},{"name":"Act 5: Google OR-Tools CP-SAT Paper Assembly (45 Seconds)","total_count":1,"children":[]},{"name":"Act 6: Institutional Moderation & Multi-Format Exports (45 Seconds)","total_count":1,"children":[]},{"name":"Act 7: BigQuery Productivity Analytics & ROI (30 Seconds)","total_count":1,"children":[]},{"name":"AssessCraft AI \u2014 5-Minute Evaluator Demo Script & Walkthrough","total_count":1,"children":[]},{"name":"AssessCraft AI \u2014 5-Minute Evaluator Demo Script & Walkthrough","total_count":1,"children":[]},{"name":"Executive Summary & Innovation Value","total_count":1,"children":[]},{"name":"Quick Demo Launch","total_count":1,"children":[]},{"name":"Summary of Judging Alignments","total_count":1,"children":[]},{"name":"Terminal 1: Backend","total_count":1,"children":[]},{"name":"Terminal 2: Frontend","total_count":1,"children":[]}]}]},{"name":"frontend","total_count":129,"children":[{"name":"AGENTS.md","total_count":2,"children":[{"name":"AGENTS.md","total_count":1,"children":[]},{"name":"This is NOT the Next.js you know","total_count":1,"children":[]}]},{"name":"eslint.config.mjs","total_count":1,"children":[{"name":"eslintConfig","total_count":1,"children":[]}]},{"name":"next.config.ts","total_count":1,"children":[{"name":"nextConfig","total_count":1,"children":[]}]},{"name":"package.json","total_count":42,"children":[{"name":"@tailwindcss/turbopack","total_count":1,"children":[]},{"name":"@tailwindcss/turbopack","total_count":1,"children":[]},{"name":"@types/node","total_count":1,"children":[]},{"name":"@types/node","total_count":1,"children":[]},{"name":"@types/react","total_count":1,"children":[]},{"name":"@types/react","total_count":1,"children":[]},{"name":"@types/react-dom","total_count":1,"children":[]},{"name":"@types/react-dom","total_count":1,"children":[]},{"name":"build","total_count":1,"children":[]},{"name":"clsx","total_count":1,"children":[]},{"name":"clsx","total_count":1,"children":[]},{"name":"dependencies","total_count":1,"children":[]},{"name":"dev","total_count":1,"children":[]},{"name":"devDependencies","total_count":1,"children":[]},{"name":"eslint","total_count":1,"children":[]},{"name":"eslint","total_count":1,"children":[]},{"name":"eslint-config-next","total_count":1,"children":[]},{"name":"eslint-config-next","total_count":1,"children":[]},{"name":"firebase","total_count":1,"children":[]},{"name":"firebase","total_count":1,"children":[]},{"name":"lint","total_count":1,"children":[]},{"name":"lucide-react","total_count":1,"children":[]},{"name":"lucide-react","total_count":1,"children":[]},{"name":"name","total_count":1,"children":[]},{"name":"next","total_count":1,"children":[]},{"name":"next","total_count":1,"children":[]},{"name":"private","total_count":1,"children":[]},{"name":"react","total_count":1,"children":[]},{"name":"react","total_count":1,"children":[]},{"name":"react-dom","total_count":1,"children":[]},{"name":"react-dom","total_count":1,"children":[]},{"name":"recharts","total_count":1,"children":[]},{"name":"recharts","total_count":1,"children":[]},{"name":"scripts","total_count":1,"children":[]},{"name":"start","total_count":1,"children":[]},{"name":"tailwind-merge","total_count":1,"children":[]},{"name":"tailwind-merge","total_count":1,"children":[]},{"name":"tailwindcss","total_count":1,"children":[]},{"name":"tailwindcss","total_count":1,"children":[]},{"name":"typescript","total_count":1,"children":[]},{"name":"typescript","total_count":1,"children":[]},{"name":"version","total_count":1,"children":[]}]},{"name":"README.md","total_count":5,"children":[{"name":"Deploy on Vercel","total_count":1,"children":[]},{"name":"Getting Started","total_count":1,"children":[]},{"name":"Learn More","total_count":1,"children":[]},{"name":"or","total_count":1,"children":[]},{"name":"or","total_count":1,"children":[]}]},{"name":"src","total_count":60,"children":[{"name":"app","total_count":42,"children":[{"name":"analytics","total_count":6,"children":[{"name":"page.tsx","total_count":6,"children":[{"name":"AnalyticsData","total_count":1,"children":[]},{"name":"AnalyticsPage()","total_count":1,"children":[]},{"name":"fetchAnalytics()","total_count":1,"children":[]},{"name":"FlagCount","total_count":1,"children":[]},{"name":"StageTiming","total_count":1,"children":[]},{"name":"TelemetryEvent","total_count":1,"children":[]}]}]},{"name":"assessments","total_count":18,"children":[{"name":"[id]","total_count":14,"children":[{"name":"page.tsx","total_count":14,"children":[{"name":"Assessment","total_count":1,"children":[]},{"name":"AssessmentWorkspaceContent()","total_count":1,"children":[]},{"name":"AssessmentWorkspacePage()","total_count":1,"children":[]},{"name":"Blueprint","total_count":1,"children":[]},{"name":"BlueprintCell","total_count":1,"children":[]},{"name":"EquivalenceReport","total_count":1,"children":[]},{"name":"Flag","total_count":1,"children":[]},{"name":"Item","total_count":1,"children":[]},{"name":"ModerationCheckItem","total_count":1,"children":[]},{"name":"ModerationComment","total_count":1,"children":[]},{"name":"ModerationRecord","total_count":1,"children":[]},{"name":"Option","total_count":1,"children":[]},{"name":"PaperVersion","total_count":1,"children":[]},{"name":"SourceCitation","total_count":1,"children":[]}]}]},{"name":"new","total_count":4,"children":[{"name":"page.tsx","total_count":4,"children":[{"name":"CourseOption","total_count":1,"children":[]},{"name":"loadCourses()","total_count":1,"children":[]},{"name":"NewAssessmentPage()","total_count":1,"children":[]},{"name":"SAMPLE_PROMPTS","total_count":1,"children":[]}]}]}]},{"name":"courses","total_count":9,"children":[{"name":"[code]","total_count":9,"children":[{"name":"page.tsx","total_count":9,"children":[{"name":"ChatMessage","total_count":1,"children":[]},{"name":"Citation","total_count":1,"children":[]},{"name":"CLO","total_count":1,"children":[]},{"name":"Course","total_count":1,"children":[]},{"name":"CoursePage()","total_count":1,"children":[]},{"name":"CoursePageContent()","total_count":1,"children":[]},{"name":"DocumentItem","total_count":1,"children":[]},{"name":"fetchCourseData()","total_count":1,"children":[]},{"name":"Topic","total_count":1,"children":[]}]}]}]},{"name":"layout.tsx","total_count":4,"children":[{"name":"geistMono","total_count":1,"children":[]},{"name":"geistSans","total_count":1,"children":[]},{"name":"metadata","total_count":1,"children":[]},{"name":"RootLayout()","total_count":1,"children":[]}]},{"name":"login","total_count":1,"children":[{"name":"page.tsx","total_count":1,"children":[{"name":"LoginPage()","total_count":1,"children":[]}]}]},{"name":"page.tsx","total_count":4,"children":[{"name":"CourseData","total_count":1,"children":[]},{"name":"DashboardPage()","total_count":1,"children":[]},{"name":"HealthData","total_count":1,"children":[]},{"name":"loadData()","total_count":1,"children":[]}]}]},{"name":"components","total_count":5,"children":[{"name":"AgentTraceDrawer.tsx","total_count":4,"children":[{"name":"AgentTraceDrawer()","total_count":1,"children":[]},{"name":"AgentTraceDrawerProps","total_count":1,"children":[]},{"name":"RunStep","total_count":1,"children":[]},{"name":"RunTrace","total_count":1,"children":[]}]},{"name":"Navbar.tsx","total_count":1,"children":[{"name":"Navbar()","total_count":1,"children":[]}]}]},{"name":"context","total_count":5,"children":[{"name":"AuthContext.tsx","total_count":5,"children":[{"name":"AuthContext","total_count":1,"children":[]},{"name":"AuthContextType","total_count":1,"children":[]},{"name":"AuthProvider()","total_count":1,"children":[]},{"name":"DEMO_PERSONAS","total_count":1,"children":[]},{"name":"useAuth()","total_count":1,"children":[]}]}]},{"name":"lib","total_count":8,"children":[{"name":"api.ts","total_count":5,"children":[{"name":"API_BASE_URL","total_count":1,"children":[]},{"name":"apiDownload()","total_count":1,"children":[]},{"name":"apiRequest()","total_count":1,"children":[]},{"name":"getStoredUser()","total_count":1,"children":[]},{"name":"UserSession","total_count":1,"children":[]}]},{"name":"firebase.ts","total_count":3,"children":[{"name":"auth","total_count":1,"children":[]},{"name":"firebaseConfig","total_count":1,"children":[]},{"name":"googleProvider","total_count":1,"children":[]}]}]}]},{"name":"tsconfig.json","total_count":18,"children":[{"name":"allowJs","total_count":1,"children":[]},{"name":"compilerOptions","total_count":1,"children":[]},{"name":"esModuleInterop","total_count":1,"children":[]},{"name":"exclude","total_count":1,"children":[]},{"name":"include","total_count":1,"children":[]},{"name":"incremental","total_count":1,"children":[]},{"name":"isolatedModules","total_count":1,"children":[]},{"name":"jsx","total_count":1,"children":[]},{"name":"lib","total_count":1,"children":[]},{"name":"module","total_count":1,"children":[]},{"name":"moduleResolution","total_count":1,"children":[]},{"name":"noEmit","total_count":1,"children":[]},{"name":"paths","total_count":1,"children":[]},{"name":"plugins","total_count":1,"children":[]},{"name":"resolveJsonModule","total_count":1,"children":[]},{"name":"skipLibCheck","total_count":1,"children":[]},{"name":"strict","total_count":1,"children":[]},{"name":"target","total_count":1,"children":[]}]}]},{"name":"infra","total_count":21,"children":[{"name":"deploy_backend.sh","total_count":11,"children":[{"name":"AGENT_RUNTIME","total_count":1,"children":[]},{"name":"APP_NAME","total_count":1,"children":[]},{"name":"BQ_DATASET","total_count":1,"children":[]},{"name":"BUCKET","total_count":1,"children":[]},{"name":"deploy_backend.sh script","total_count":1,"children":[]},{"name":"DOCAI_PROCESSOR_ID","total_count":1,"children":[]},{"name":"GCP_PROJECT_ID","total_count":1,"children":[]},{"name":"GCP_REGION","total_count":1,"children":[]},{"name":"GEMINI_MODEL","total_count":1,"children":[]},{"name":"REVIEWER_MODEL","total_count":1,"children":[]},{"name":"SEARCH_DATASTORE_ID","total_count":1,"children":[]}]},{"name":"deploy_frontend.sh","total_count":4,"children":[{"name":"APP_NAME","total_count":1,"children":[]},{"name":"deploy_frontend.sh script","total_count":1,"children":[]},{"name":"GCP_PROJECT_ID","total_count":1,"children":[]},{"name":"GCP_REGION","total_count":1,"children":[]}]},{"name":"setup.sh","total_count":6,"children":[{"name":"APP_NAME","total_count":1,"children":[]},{"name":"DOCAI_REGION","total_count":1,"children":[]},{"name":"GCP_PROJECT_ID","total_count":1,"children":[]},{"name":"GCP_REGION","total_count":1,"children":[]},{"name":"setup.sh script","total_count":1,"children":[]},{"name":"VERTEX_SEARCH_LOC","total_count":1,"children":[]}]}]},{"name":"README.md","total_count":23,"children":[{"name":"1. Backend Setup","total_count":1,"children":[]},{"name":"1. One-Time GCP Infrastructure Setup","total_count":1,"children":[]},{"name":"1. Run Complete Pytest Suite (24 Tests)","total_count":1,"children":[]},{"name":"2. Deploy Backend to Cloud Run","total_count":1,"children":[]},{"name":"2. Frontend Setup","total_count":1,"children":[]},{"name":"2. Run Reviewer Defect Detection Benchmark","total_count":1,"children":[]},{"name":"3. Deploy Frontend to Cloud Run","total_count":1,"children":[]},{"name":"Architecture Overview","total_count":1,"children":[]},{"name":"AssessCraft AI \u2014 Agentic Academic Assessment Copilot","total_count":1,"children":[]},{"name":"AssessCraft AI \u2014 Agentic Academic Assessment Copilot","total_count":1,"children":[]},{"name":"Build & run Backend container","total_count":1,"children":[]},{"name":"Build & run Frontend container","total_count":1,"children":[]},{"name":"Cloud Deployment (Google Cloud Run)","total_count":1,"children":[]},{"name":"Documentation Links","total_count":1,"children":[]},{"name":"Evaluator Fast-Track & Demo Personas","total_count":1,"children":[]},{"name":"Key Achievements & Pitch Metrics","total_count":1,"children":[]},{"name":"Prerequisites","total_count":1,"children":[]},{"name":"Quickstart: Running Locally","total_count":1,"children":[]},{"name":"Repository Structure","total_count":1,"children":[]},{"name":"Run FastAPI backend (defaults to port 8080)","total_count":1,"children":[]},{"name":"Running with Docker Containers","total_count":1,"children":[]},{"name":"The 9-Stage Agent Workflow","total_count":1,"children":[]},{"name":"Verification & Quantitative Benchmark","total_count":1,"children":[]}]}]};
+
+    function transformData(jsonData) {
+        // Helper function to recursively build the children structure
+        function processNode(node, parentL1StageName) {
+            let displayName = node.name;
+            // Append total_count if it exists and is not already in the name
+            if (node.total_count !== undefined) {
+                if (!/\(Total Count: \d+\)$/.test(displayName)) {
+                    displayName += ` (Total Count: ${node.total_count})`;
+                }
+            }
+
+            const newNode = { name: displayName };
+
+            if (parentL1StageName === "Root") {
+                 newNode.originalStageName = node.name;
+            } else {
+                newNode.originalStageName = parentL1StageName;
+            }
+
+            if (node.children && node.children.length > 0) {
+                const stageNameToPass = (parentL1StageName === "Root") ? node.name : parentL1StageName;
+                newNode.children = node.children.map(child => processNode(child, stageNameToPass));
+            }
+
+            return newNode;
+        }
+
+        let rootDisplayName = jsonData.name;
+        if (jsonData.total_count !== undefined && !/\(Total Count: \d+\)$/.test(rootDisplayName)) {
+            rootDisplayName += ` (Total Count: ${jsonData.total_count})`;
+        }
+
+        return {
+            name: rootDisplayName,
+            originalStageName: "Root",
+            children: (jsonData.children || []).map(child => processNode(child, "Root"))
+        };
+    }
+
+    const treeData = transformData(initialJsonData);
+
+    // Auto-populated phaseColors: every depth-1 child of the root gets
+    // a stable colour from a bigger palette so all top-level dirs are
+    // distinguishable.
+    const PALETTE = [
+      ["#3498DB","#2980B9","#AED6F1"], ["#2ECC71","#27AE60","#A9DFBF"],
+      ["#E74C3C","#C0392B","#F5B7B1"], ["#9B59B6","#8E44AD","#D7BDE2"],
+      ["#F39C12","#D68910","#FAD7A0"], ["#1ABC9C","#117864","#A2D9CE"],
+      ["#34495E","#1B2631","#ABB2B9"], ["#E67E22","#BA4A00","#F5CBA7"],
+      ["#16A085","#0E6655","#A2D9CE"], ["#D35400","#A04000","#EDBB99"],
+      ["#7F8C8D","#566573","#D5DBDB"], ["#C0392B","#7B241C","#F5B7B1"],
+      ["#2E86C1","#1B4F72","#A9CCE3"], ["#28B463","#196F3D","#A9DFBF"],
+      ["#AF7AC5","#6C3483","#D2B4DE"],
+    ];
+    const phaseColors = { "Root": { fill: "#4A4A4A", stroke: "#333333", collapsedFill: "#6C757D" },
+                          "Default": { fill: "#BDC3C7", stroke: "#95A5A6", collapsedFill: "#ECF0F1" } };
+    (initialJsonData.children || []).forEach((c, i) => {
+      const pal = PALETTE[i % PALETTE.length];
+      phaseColors[c.name] = { fill: pal[0], stroke: pal[1], collapsedFill: pal[2] };
+    });
+
+    const levelSpecificPalettes = {
+      0: { fill: "#4A4A4A", stroke: "#333333", collapsedFill: "#6C757D" },
+      2: { fill: "#6ab04c", stroke: "#508a38", collapsedFill: "#a3d391" },
+      3: { fill: "#f0932b", stroke: "#d0730f", collapsedFill: "#f6c07e" },
+      4: { fill: "#be2edd", stroke: "#a01cb3", collapsedFill: "#e08bf2" },
+      5: { fill: "#00a8ff", stroke: "#007ac1", collapsedFill: "#74d2ff" },
+      6: { fill: "#e55039", stroke: "#c23620", collapsedFill: "#f09a8d" },
+      default: { fill: "#747d8c", stroke: "#57606f", collapsedFill: "#a4b0be" }
+    };
+
+    const svgElement = d3.select("#tree-svg");
+    const initialSvgWidth = +svgElement.attr("width");
+    const initialSvgHeight = +svgElement.attr("height");
+    const margin = { top: 40, right: 120, bottom: 80, left: 450 };
+    let width = initialSvgWidth - margin.left - margin.right;
+    let height = initialSvgHeight - margin.top - margin.bottom;
+    const duration = 500;
+    let nodeCounter = 0;
+    const g = svgElement.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+    const treemap = d3.tree().nodeSize([40, 0]);
+    let rootNode = d3.hierarchy(treeData, d => d.children);
+    rootNode.x0 = 0;
+    rootNode.y0 = 0;
+
+    if (rootNode.children) {
+      rootNode.children.forEach(d_child => {
+        if (d_child.children) { collapseBranch(d_child); }
+      });
+    }
+    updateTree(rootNode);
+
+    function collapseBranch(d) { if (d.children) { d._children = d.children; d._children.forEach(collapseBranch); d.children = null; } }
+    function expandBranch(d) { if (d._children) { d.children = d._children; d._children = null; } if (d.children) { d.children.forEach(expandBranch); } }
+    window.expandAll = () => { expandBranch(rootNode); updateTree(rootNode); };
+    window.collapseAll = () => { if (rootNode.children) { rootNode.children.forEach(collapseBranch); } updateTree(rootNode); };
+    window.resetView = () => { if (rootNode.children) { rootNode.children.forEach(d_child => { if (d_child.children || d_child._children) { collapseBranch(d_child); } }); } if (rootNode._children && !rootNode.children) { rootNode.children = rootNode._children; rootNode._children = null; } updateTree(rootNode); };
+
+    function updateTree(source) {
+      const treeLayoutData = treemap(rootNode);
+      let nodes = treeLayoutData.descendants();
+      let links = treeLayoutData.descendants().slice(1);
+
+      let minX = 0;
+      let maxX = 0;
+      if (nodes.length > 0) {
+        minX = d3.min(nodes, d => d.x);
+        maxX = d3.max(nodes, d => d.x);
+      }
+
+      let neededHeight = Math.max(initialSvgHeight, maxX - minX + margin.top + margin.bottom + 100);
+      svgElement.transition().duration(duration / 2).attr("height", neededHeight);
+      g.transition().duration(duration / 2).attr("transform", `translate(${margin.left},${margin.top - minX + 40})`);
+
+      nodes.forEach(d => { d.y = d.depth * 400; }); // Adjust horizontal separation if needed
+
+      const node = g.selectAll('g.node').data(nodes, d => d.id || (d.id = ++nodeCounter));
+      const nodeEnter = node.enter().append('g')
+        .attr('class', d => "node" + (d.children || d._children ? " node--internal" : " node--leaf") + (d._children ? " _children" : ""))
+        .attr('transform', d => `translate(${source.y0},${source.x0})`)
+        .on('click', (event, d) => { if (d.children) { d._children = d.children; d.children = null; } else if (d._children) { d.children = d._children; d._children = null; } updateTree(d); })
+        .style('cursor', d => (d.children || d._children) ? 'pointer' : 'default');
+
+      nodeEnter.append('circle').attr('r', 1e-6);
+
+      nodeEnter.append('text')
+        .attr('dy', '.35em')
+        .attr('x', d => d.children || d._children ? -14 : 14)
+        .attr('text-anchor', d => d.children || d._children ? 'end' : 'start')
+        .style("fill-opacity", 1e-6)
+        .call(wrapText, 380);
+
+      const nodeUpdate = nodeEnter.merge(node);
+      nodeUpdate.transition().duration(duration)
+        .attr('transform', d => `translate(${d.y},${d.x})`)
+        .attr('class', d => "node" + (d.children ? " node--internal" : " node--leaf") + (d._children ? " node--internal _children" : ""));
+
+      nodeUpdate.select('circle').attr('r', 8.5)
+        .style('fill', d => {
+            let palette;
+            if (d.depth === 0) {
+                palette = levelSpecificPalettes[0];
+            } else if (d.depth === 1) {
+                palette = phaseColors[d.data.originalStageName] || phaseColors.Default;
+            } else {
+                palette = levelSpecificPalettes[d.depth] || levelSpecificPalettes.default;
+            }
+            if (d._children) return palette.collapsedFill;
+            if (d.children) return palette.fill;
+            return "#fff";
+        })
+        .style('stroke', d => {
+            let palette;
+            if (d.depth === 0) {
+                palette = levelSpecificPalettes[0];
+            } else if (d.depth === 1) {
+                palette = phaseColors[d.data.originalStageName] || phaseColors.Default;
+            } else {
+                palette = levelSpecificPalettes[d.depth] || levelSpecificPalettes.default;
+            }
+            return palette.stroke;
+        });
+      nodeUpdate.select('text').style("fill-opacity", 1).call(wrapText, 380);
+
+      const nodeExit = node.exit().transition().duration(duration).attr('transform', d => `translate(${source.y},${source.x})`).remove();
+      nodeExit.select('circle').attr('r', 1e-6);
+      nodeExit.select('text').style('fill-opacity', 1e-6);
+
+      const link = g.selectAll('path.link').data(links, d => d.id);
+      const linkEnter = link.enter().insert('path', "g").attr('class', 'link').attr('d', d => { const o = { x: source.x0, y: source.y0 }; return diagonal(o, o); });
+
+      linkEnter.merge(link).transition().duration(duration).attr('d', d => diagonal(d, d.parent))
+        .style('stroke', d => {
+            const sourceNode = d.parent;
+            if (!sourceNode) return phaseColors.Default.stroke;
+            const l1AncestorName = sourceNode.data.originalStageName;
+            const colorPalette = phaseColors[l1AncestorName] || phaseColors.Default;
+            return colorPalette.stroke;
+        });
+      link.exit().transition().duration(duration).attr('d', d => { const o = { x: source.x, y: source.y }; return diagonal(o, o); }).remove();
+      nodes.forEach(d => { d.x0 = d.x; d.y0 = d.y; });
+    }
+
+    function diagonal(s, d) { return `M ${s.y} ${s.x} C ${(s.y + d.y) / 2} ${s.x}, ${(s.y + d.y) / 2} ${d.x}, ${d.y} ${d.x}`; }
+
+    function wrapText(textElements, maxWidth) {
+        const textPartColors = {
+            name: '#343a40',
+            count: '#0056b3'
+        };
+        const countRegex = /(\s\(Total Count: \d+\))$/;
+
+        textElements.each(function () {
+            const textD3 = d3.select(this);
+            const originalNodeText = textD3.datum().data.name;
+            const x = parseFloat(textD3.attr("x") || 0);
+            const initialDy = textD3.attr("dy");
+            const textAnchor = textD3.attr("text-anchor");
+            const lineHeight = 1.1;
+
+            textD3.text(null);
+
+            let namePart = originalNodeText;
+            let countPartText = "";
+
+            const countMatch = originalNodeText.match(countRegex);
+            if (countMatch && originalNodeText.endsWith(countMatch[0])) {
+                namePart = originalNodeText.substring(0, originalNodeText.length - countMatch[0].length).trim();
+                countPartText = countMatch[0].trim();
+            }
+
+            const tokens = [];
+            namePart.split(/\s+/).filter(Boolean).forEach(word => {
+                tokens.push({ text: word, type: 'name' });
+            });
+            if (countPartText) {
+                tokens.push({ text: countPartText, type: 'count' });
+            }
+
+            if (tokens.length === 0 && originalNodeText) {
+                tokens.push({ text: originalNodeText, type: 'name' });
+            }
+
+            let currentTspan = textD3.append("tspan").attr("x", x).attr("dy", initialDy);
+            if (textAnchor === "end") currentTspan.attr("text-anchor", "end");
+
+            let lineTokens = [];
+
+            for (let i = 0; i < tokens.length; i++) {
+                const tokenObj = tokens[i];
+
+                lineTokens.push(tokenObj);
+                currentTspan.text(lineTokens.map(t => t.text).join(" "));
+
+                if (currentTspan.node().getComputedTextLength() > maxWidth && lineTokens.length > 1) {
+                    lineTokens.pop();
+
+                    currentTspan.text(null);
+                    lineTokens.forEach((prevToken, idx) => {
+                        currentTspan.append("tspan")
+                            .text((idx > 0 ? " " : "") + prevToken.text)
+                            .style("fill", textPartColors[prevToken.type] || textPartColors.name)
+                            .style("font-weight", prevToken.type === 'count' ? "bold" : "normal");
+                    });
+
+                    lineTokens = [tokenObj];
+                    currentTspan = textD3.append("tspan").attr("x", x).attr("dy", lineHeight + "em");
+                    if (textAnchor === "end") currentTspan.attr("text-anchor", "end");
+                }
+            }
+
+            currentTspan.text(null);
+            lineTokens.forEach((token, idx) => {
+                currentTspan.append("tspan")
+                    .text((idx > 0 ? " " : "") + token.text)
+                    .style("fill", textPartColors[token.type] || textPartColors.name)
+                    .style("font-weight", token.type === 'count' ? "bold" : "normal");
+            });
+
+            if (textD3.selectAll("tspan > tspan").empty() && textD3.select("tspan").text().length === 0 && originalNodeText) {
+                let t = textD3.select("tspan");
+                let displayText = originalNodeText;
+                t.text(displayText).style("fill", textPartColors.name);
+                if (t.node() && t.node().getComputedTextLength() > maxWidth && displayText.length > 20) {
+                    let estimatedChars = Math.floor(maxWidth / (t.node().getComputedTextLength()/displayText.length) );
+                    displayText = displayText.substring(0, Math.max(0, estimatedChars - 3)) + "...";
+                    t.text(displayText);
+                }
+            }
+        });
+    }
+  </script>
+</body>
+</html>

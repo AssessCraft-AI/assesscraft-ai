@@ -1,0 +1,352 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-13T14:00:00Z",
+  "title": "Design System: AssessCraft AI",
+  "extensions": {
+    "colorMeta": {
+      "verified-emerald": {
+        "role": "primary",
+        "displayName": "Verified Emerald",
+        "canonical": "#047857",
+        "tonalRamp": [
+          "#022c22",
+          "#064e3b",
+          "#064e3b",
+          "#065f46",
+          "#047857",
+          "#34d399",
+          "#a7f3d0",
+          "#ecfdf5"
+        ]
+      },
+      "verified-emerald-deep": {
+        "role": "primary",
+        "displayName": "Verified Emerald Deep",
+        "canonical": "#065f46"
+      },
+      "verified-emerald-ink": {
+        "role": "primary",
+        "displayName": "Verified Emerald Ink",
+        "canonical": "#064e3b"
+      },
+      "verified-emerald-wash": {
+        "role": "primary",
+        "displayName": "Verified Emerald Wash",
+        "canonical": "#ecfdf5"
+      },
+      "verified-emerald-rule": {
+        "role": "primary",
+        "displayName": "Verified Emerald Rule",
+        "canonical": "#a7f3d0"
+      },
+      "ledger-ink": {
+        "role": "neutral",
+        "displayName": "Ledger Ink",
+        "canonical": "#0f172a",
+        "tonalRamp": [
+          "#020617",
+          "#0f172a",
+          "#334155",
+          "#64748b",
+          "#94a3b8",
+          "#cbd5e1",
+          "#e2e8f0",
+          "#f8fafc"
+        ]
+      },
+      "ledger-ink-soft": {
+        "role": "neutral",
+        "displayName": "Ledger Ink Soft",
+        "canonical": "#334155"
+      },
+      "ledger-graphite": {
+        "role": "neutral",
+        "displayName": "Ledger Graphite",
+        "canonical": "#64748b"
+      },
+      "ledger-pencil": {
+        "role": "neutral",
+        "displayName": "Ledger Pencil",
+        "canonical": "#94a3b8"
+      },
+      "ledger-rule": {
+        "role": "neutral",
+        "displayName": "Ledger Rule",
+        "canonical": "#e2e8f0"
+      },
+      "ledger-rule-strong": {
+        "role": "neutral",
+        "displayName": "Ledger Rule Strong",
+        "canonical": "#cbd5e1"
+      },
+      "ledger-paper": {
+        "role": "neutral",
+        "displayName": "Ledger Paper",
+        "canonical": "#f8fafc"
+      },
+      "ledger-paper-shade": {
+        "role": "neutral",
+        "displayName": "Ledger Paper Shade",
+        "canonical": "#f1f5f9"
+      },
+      "ledger-sheet": {
+        "role": "neutral",
+        "displayName": "Ledger Sheet",
+        "canonical": "#ffffff"
+      },
+      "caution-amber": {
+        "role": "tertiary",
+        "displayName": "Caution Amber",
+        "canonical": "#b45309",
+        "tonalRamp": [
+          "#451a03",
+          "#78350f",
+          "#92400e",
+          "#b45309",
+          "#d97706",
+          "#fbbf24",
+          "#fde68a",
+          "#fffbeb"
+        ]
+      },
+      "caution-amber-wash": {
+        "role": "tertiary",
+        "displayName": "Caution Amber Wash",
+        "canonical": "#fffbeb"
+      },
+      "caution-amber-rule": {
+        "role": "tertiary",
+        "displayName": "Caution Amber Rule",
+        "canonical": "#fde68a"
+      },
+      "defect-rose": {
+        "role": "tertiary",
+        "displayName": "Defect Rose",
+        "canonical": "#be123c",
+        "tonalRamp": [
+          "#4c0519",
+          "#881337",
+          "#9f1239",
+          "#be123c",
+          "#e11d48",
+          "#fb7185",
+          "#fecdd3",
+          "#fff1f2"
+        ]
+      },
+      "defect-rose-wash": {
+        "role": "tertiary",
+        "displayName": "Defect Rose Wash",
+        "canonical": "#fff1f2"
+      },
+      "defect-rose-rule": {
+        "role": "tertiary",
+        "displayName": "Defect Rose Rule",
+        "canonical": "#fecdd3"
+      },
+      "info-sky": {
+        "role": "tertiary",
+        "displayName": "Info Sky",
+        "canonical": "#0369a1",
+        "tonalRamp": [
+          "#082f49",
+          "#0c4a6e",
+          "#075985",
+          "#0369a1",
+          "#0284c7",
+          "#38bdf8",
+          "#bae6fd",
+          "#f0f9ff"
+        ]
+      },
+      "info-sky-wash": {
+        "role": "tertiary",
+        "displayName": "Info Sky Wash",
+        "canonical": "#f0f9ff"
+      },
+      "info-sky-rule": {
+        "role": "tertiary",
+        "displayName": "Info Sky Rule",
+        "canonical": "#bae6fd"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page-level figures and identifiers (assessment titles, course codes), mono extrabold."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Page headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card titles and large button labels."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Default 12px working size for content and controls."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "11px uppercase tracked field labels and in-card eyebrows."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Marks, counts, scores, IDs, CLO codes. Always monospace."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hairline",
+        "value": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        "purpose": "Cards, inputs and buttons at rest."
+      },
+      {
+        "name": "nav-underline",
+        "value": "0 1px 2px rgba(0,0,0,0.03)",
+        "purpose": "Sticky header separation."
+      },
+      {
+        "name": "float",
+        "value": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+        "purpose": "Dropdowns and drawers only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1) 150ms",
+        "purpose": "Default Tailwind transition for colour and border state changes."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single emerald action in a view.",
+      "html": "<button class=\"ds-btn-primary\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 6 9 17l-5-5\"/></svg>Generate Blueprint</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border: none; border-radius: 8px; background: #047857; color: #fff; font: 600 12px/1.33 Geist, -apple-system, 'Segoe UI', Roboto, sans-serif; box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); cursor: pointer; transition: background-color 150ms cubic-bezier(0.4,0,0.2,1); } .ds-btn-primary:hover { background: #065f46; } .ds-btn-primary:active { background: #064e3b; } .ds-btn-primary:focus-visible { outline: 2px solid #047857; outline-offset: 2px; } .ds-btn-primary:disabled { opacity: .5; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "White ruled button for every non-primary action.",
+      "html": "<button class=\"ds-btn-secondary\">Export CSV</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border: 1px solid #e2e8f0; border-radius: 8px; background: #fff; color: #334155; font: 600 12px/1.33 Geist, -apple-system, 'Segoe UI', Roboto, sans-serif; box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); cursor: pointer; transition: background-color 150ms, border-color 150ms; } .ds-btn-secondary:hover { background: #f8fafc; border-color: #cbd5e1; } .ds-btn-secondary:focus-visible { outline: 2px solid #047857; outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Labelled input with emerald focus rule.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Course code</span><input class=\"ds-input\" value=\"CS2040\" /></label>",
+      "css": ".ds-field { display: block; } .ds-field-label { display: block; margin-bottom: 4px; font: 600 11px/1.4 Geist, -apple-system, 'Segoe UI', Roboto, sans-serif; letter-spacing: .05em; text-transform: uppercase; color: #64748b; } .ds-input { width: 100%; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 8px; background: #fff; color: #0f172a; font: 400 14px/1.43 Geist, -apple-system, 'Segoe UI', Roboto, sans-serif; box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); } .ds-input:focus { outline: none; border-color: #047857; box-shadow: 0 0 0 1px #047857; }"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "refersTo": "nav-link-active",
+      "description": "Top nav links; active is an emerald wash pill.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link is-active\" href=\"#\">Courses</a><a class=\"ds-nav-link\" href=\"#\">Analytics</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 4px; } .ds-nav-link { padding: 6px 12px; border: 1px solid transparent; border-radius: 8px; color: #475569; font: 500 14px/1.43 Geist, -apple-system, 'Segoe UI', Roboto, sans-serif; text-decoration: none; transition: background-color 150ms, color 150ms; } .ds-nav-link:hover { background: #f1f5f9; color: #0f172a; } .ds-nav-link.is-active { background: #ecfdf5; color: #064e3b; border-color: rgb(167 243 208 / .8); } .ds-nav-link:focus-visible { outline: 2px solid #047857; outline-offset: 2px; }"
+    },
+    {
+      "name": "Status Chips",
+      "kind": "chip",
+      "refersTo": "chip-verified",
+      "description": "Tinted semantic chips: wash + rule + deep text.",
+      "html": "<span class=\"ds-chip ds-chip-ok\"><i></i>Verified</span> <span class=\"ds-chip ds-chip-warn\"><i></i>Pending moderation</span> <span class=\"ds-chip ds-chip-bad\"><i></i>Key mismatch</span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px; border: 1px solid; border-radius: 9999px; font: 600 12px/1.33 Geist, -apple-system, 'Segoe UI', Roboto, sans-serif; } .ds-chip i { width: 6px; height: 6px; border-radius: 9999px; background: currentColor; } .ds-chip-ok { background: #ecfdf5; border-color: #a7f3d0; color: #065f46; } .ds-chip-warn { background: #fffbeb; border-color: #fde68a; color: #b45309; } .ds-chip-bad { background: #fff1f2; border-color: #fecdd3; color: #be123c; }"
+    },
+    {
+      "name": "Ledger Sheet Card",
+      "kind": "card",
+      "refersTo": "card-sheet",
+      "description": "White 12px sheet with slate rule; mono figures.",
+      "html": "<div class=\"ds-card\"><span class=\"ds-card-label\">Version A</span><div class=\"ds-card-figure\">100 <small>marks</small></div><p class=\"ds-card-meta\">30 items · 6 CLOs covered</p></div>",
+      "css": ".ds-card { padding: 20px; border: 1px solid rgb(226 232 240 / .9); border-radius: 12px; background: #fff; box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); transition: border-color 150ms; } .ds-card:hover { border-color: #cbd5e1; } .ds-card-label { font: 600 11px/1.4 Geist, -apple-system, 'Segoe UI', Roboto, sans-serif; letter-spacing: .05em; text-transform: uppercase; color: #64748b; } .ds-card-figure { margin-top: 8px; font: 800 30px/1.2 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: -.025em; color: #0f172a; } .ds-card-figure small { font-size: 12px; font-weight: 500; color: #64748b; } .ds-card-meta { margin: 8px 0 0; font: 400 12px/1.33 Geist, -apple-system, 'Segoe UI', Roboto, sans-serif; color: #64748b; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Examiner's Ledger",
+    "overview": "AssessCraft reads like a well-kept examinations ledger: white sheets on pale paper, slate ink, hairline rules, and a single green mark that means this is checked. The interface is a record of work done by agents and signed off by people, so numbers, statuses and citations are the content, and the chrome stays out of their way. Density is high and type is small. Most working text sits at 11–12px, with monospace reserved for figures, IDs, marks and codes so they line up and read as data. Surfaces are near-flat. Depth comes from a white sheet against slate paper and a 1px rule, never from dramatic shadow. Colour is semantic first: emerald for action and verification, amber for caution, rose for defects, sky for information. Nothing else competes.",
+    "keyCharacteristics": [
+      "White sheet cards (12px corners, 1px slate rule, hairline shadow) on slate-50 paper.",
+      "One brand hue, emerald, carrying both primary action and \"verified\" status.",
+      "Monospace for every figure: marks, counts, IDs, CLO codes, scores.",
+      "Small, dense type (11–12px working size) with uppercase tracked micro-labels.",
+      "Semantic tinted chips (wash background + rule border + deep text) for every status."
+    ],
+    "rules": [
+      {
+        "name": "The Contrast Floor Rule",
+        "body": "White text only ever sits on emerald-700 or darker; emerald-600 fails 4.5:1. Helper text is slate-500 or darker, never slate-400.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Green Rule",
+        "body": "Emerald means \"act\" or \"verified\", and nothing else. Never use it for decoration, illustration, or a category label.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tinted Chip Rule",
+        "body": "Every status is written as wash background + matching rule border + deep text of one semantic hue. Never a solid saturated status pill.",
+        "section": "colors"
+      },
+      {
+        "name": "The Earned Status Rule",
+        "body": "A green chip is computed, never asserted. If the data can't prove it, the chip goes amber or the figure shows an em dash.",
+        "section": "colors"
+      },
+      {
+        "name": "The Figures Are Mono Rule",
+        "body": "Any number a lecturer might compare (marks, counts, scores, IDs) is set in monospace.",
+        "section": "typography"
+      },
+      {
+        "name": "The 11px Floor Rule",
+        "body": "11px is the smallest acceptable size.",
+        "section": "typography"
+      },
+      {
+        "name": "The Border Not Shadow Rule",
+        "body": "Interactive emphasis is a darker rule, not a bigger shadow. Shadows above hairline belong only to things that float over the page.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do derive every status, badge and \"ready\" claim from data on the page; when the data can't prove it, say what is missing.",
+      "Do use emerald-600 (#047857) for the single primary action in a view and for verified status, and nothing else.",
+      "Do set every comparable number in monospace.",
+      "Do write status as a tinted chip: wash + rule + deep text of one semantic hue.",
+      "Do build containers as white 12px-cornered sheets with a 1px slate-200 rule and hairline shadow on slate-50 paper.",
+      "Do signal hover on cards and secondary controls by darkening the rule to slate-300."
+    ],
+    "donts": [
+      "Don't present fallback or placeholder text as an agent's judgement; label it.",
+      "Don't introduce a second brand hue, purple included.",
+      "Don't add gradients, glassmorphism or glow.",
+      "Don't set text below 11px.",
+      "Don't use shadows above hairline on anything that does not float.",
+      "Don't use emoji as icons; use lucide-react at 14–16px, inheriting the text colour."
+    ]
+  }
+}

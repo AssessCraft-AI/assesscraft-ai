@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "graphify": {
+      "command": "/opt/homebrew/bin/python3.11",
+      "args": [
+        "-m",
+        "graphify.serve",
+        "/Users/shalukakalpajith/AssessCraft_AI_Shaluka/graphify-out/graph.json"
+      ]
+    }
+  }
+}

@@ -1,0 +1,1862 @@
+[
+  {
+    "id": "eval-1",
+    "stem": "Which component in an Entity-Relationship (ER) diagram represents a weak entity set?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Rectangle"
+      },
+      {
+        "id": "B",
+        "text": "Double rectangle"
+      },
+      {
+        "id": "C",
+        "text": "Diamond"
+      },
+      {
+        "id": "D",
+        "text": "Ellipse"
+      }
+    ],
+    "key": "B",
+    "actual_correct_answer": "B",
+    "is_wrong_key": false,
+    "is_duplicate": true,
+    "duplicate_of": null,
+    "cloId": "CLO1",
+    "topicId": "t1",
+    "bloom": "remember",
+    "difficulty": 1
+  },
+  {
+    "id": "eval-2",
+    "stem": "In relational algebra, which operator filters rows based on a boolean predicate condition?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Projection"
+      },
+      {
+        "id": "B",
+        "text": "Selection (sigma)"
+      },
+      {
+        "id": "C",
+        "text": "Join"
+      },
+      {
+        "id": "D",
+        "text": "Division"
+      }
+    ],
+    "key": "B",
+    "actual_correct_answer": "B",
+    "is_wrong_key": false,
+    "is_duplicate": true,
+    "duplicate_of": null,
+    "cloId": "CLO2",
+    "topicId": "t2",
+    "bloom": "understand",
+    "difficulty": 2
+  },
+  {
+    "id": "eval-3",
+    "stem": "Which SQL join returns all rows from the left table and matched rows from the right table?",
+    "options": [
+      {
+        "id": "A",
+        "text": "INNER JOIN"
+      },
+      {
+        "id": "B",
+        "text": "LEFT OUTER JOIN"
+      },
+      {
+        "id": "C",
+        "text": "RIGHT OUTER JOIN"
+      },
+      {
+        "id": "D",
+        "text": "CROSS JOIN"
+      }
+    ],
+    "key": "B",
+    "actual_correct_answer": "B",
+    "is_wrong_key": false,
+    "is_duplicate": true,
+    "duplicate_of": null,
+    "cloId": "CLO3",
+    "topicId": "t3",
+    "bloom": "apply",
+    "difficulty": 3
+  },
+  {
+    "id": "eval-4",
+    "stem": "What does the attribute closure of a set of attributes determine in relational schema design?",
+    "options": [
+      {
+        "id": "A",
+        "text": "All attributes functionally determined by the set"
+      },
+      {
+        "id": "B",
+        "text": "Only prime attributes"
+      },
+      {
+        "id": "C",
+        "text": "Foreign keys"
+      },
+      {
+        "id": "D",
+        "text": "Indexes"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": true,
+    "duplicate_of": null,
+    "cloId": "CLO4",
+    "topicId": "t4",
+    "bloom": "analyse",
+    "difficulty": 4
+  },
+  {
+    "id": "eval-5",
+    "stem": "Under Two-Phase Locking (2PL), once a transaction releases a lock, what action is prohibited?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Acquire any new locks"
+      },
+      {
+        "id": "B",
+        "text": "Commit"
+      },
+      {
+        "id": "C",
+        "text": "Abort"
+      },
+      {
+        "id": "D",
+        "text": "Read local variables"
+      }
+    ],
+    "key": "B",
+    "actual_correct_answer": "A",
+    "is_wrong_key": true,
+    "is_duplicate": true,
+    "duplicate_of": null,
+    "cloId": "CLO5",
+    "topicId": "t5",
+    "bloom": "evaluate",
+    "difficulty": 5
+  },
+  {
+    "id": "eval-6",
+    "stem": "In a B+ tree index structure, where do all data record pointers reside exclusively?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Root node"
+      },
+      {
+        "id": "B",
+        "text": "Leaf nodes"
+      },
+      {
+        "id": "C",
+        "text": "All nodes"
+      },
+      {
+        "id": "D",
+        "text": "Internal nodes only"
+      }
+    ],
+    "key": "B",
+    "actual_correct_answer": "B",
+    "is_wrong_key": false,
+    "is_duplicate": true,
+    "duplicate_of": null,
+    "cloId": "CLO1",
+    "topicId": "t6",
+    "bloom": "remember",
+    "difficulty": 1
+  },
+  {
+    "id": "eval-7",
+    "stem": "Which anomaly occurs when a transaction reads uncommitted changes from another?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Lost update"
+      },
+      {
+        "id": "B",
+        "text": "Dirty read"
+      },
+      {
+        "id": "C",
+        "text": "Phantom read"
+      },
+      {
+        "id": "D",
+        "text": "Non-repeatable read"
+      }
+    ],
+    "key": "B",
+    "actual_correct_answer": "B",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO3",
+    "topicId": "t8",
+    "bloom": "apply",
+    "difficulty": 3
+  },
+  {
+    "id": "eval-8",
+    "stem": "What normal form prohibits transitive dependencies on candidate keys?",
+    "options": [
+      {
+        "id": "A",
+        "text": "1NF"
+      },
+      {
+        "id": "B",
+        "text": "2NF"
+      },
+      {
+        "id": "C",
+        "text": "3NF"
+      },
+      {
+        "id": "D",
+        "text": "BCNF"
+      }
+    ],
+    "key": "C",
+    "actual_correct_answer": "C",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO4",
+    "topicId": "t1",
+    "bloom": "analyse",
+    "difficulty": 4
+  },
+  {
+    "id": "eval-9",
+    "stem": "Which clause in SQL is evaluated strictly after GROUP BY to filter groups?",
+    "options": [
+      {
+        "id": "A",
+        "text": "WHERE"
+      },
+      {
+        "id": "B",
+        "text": "HAVING"
+      },
+      {
+        "id": "C",
+        "text": "FROM"
+      },
+      {
+        "id": "D",
+        "text": "WITH"
+      }
+    ],
+    "key": "B",
+    "actual_correct_answer": "B",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO5",
+    "topicId": "t2",
+    "bloom": "evaluate",
+    "difficulty": 5
+  },
+  {
+    "id": "eval-10",
+    "stem": "What is the fundamental invariant of Write-Ahead Logging (WAL)?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Log records must hit disk before corresponding dirty database pages"
+      },
+      {
+        "id": "B",
+        "text": "Dirty pages written first"
+      },
+      {
+        "id": "C",
+        "text": "Logs kept in RAM"
+      },
+      {
+        "id": "D",
+        "text": "Logs discarded on commit"
+      }
+    ],
+    "key": "B",
+    "actual_correct_answer": "A",
+    "is_wrong_key": true,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO1",
+    "topicId": "t3",
+    "bloom": "remember",
+    "difficulty": 1
+  },
+  {
+    "id": "eval-11",
+    "stem": "Which dependency preserves non-additive join decomposition?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Lossless join"
+      },
+      {
+        "id": "B",
+        "text": "Dependency preservation"
+      },
+      {
+        "id": "C",
+        "text": "Multivalued dependency"
+      },
+      {
+        "id": "D",
+        "text": "Join dependency"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO2",
+    "topicId": "t4",
+    "bloom": "understand",
+    "difficulty": 2
+  },
+  {
+    "id": "eval-12",
+    "stem": "What data structure is used to detect deadlocks dynamically?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Wait-for graph"
+      },
+      {
+        "id": "B",
+        "text": "B+ tree"
+      },
+      {
+        "id": "C",
+        "text": "Log buffer"
+      },
+      {
+        "id": "D",
+        "text": "Lock hash table"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO3",
+    "topicId": "t5",
+    "bloom": "apply",
+    "difficulty": 3
+  },
+  {
+    "id": "eval-13",
+    "stem": "In standard SQL, which function counts all rows including NULLs?",
+    "options": [
+      {
+        "id": "A",
+        "text": "COUNT(*)"
+      },
+      {
+        "id": "B",
+        "text": "COUNT(column)"
+      },
+      {
+        "id": "C",
+        "text": "SUM(1)"
+      },
+      {
+        "id": "D",
+        "text": "COUNT(DISTINCT)"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO4",
+    "topicId": "t6",
+    "bloom": "analyse",
+    "difficulty": 4
+  },
+  {
+    "id": "eval-14",
+    "stem": "What type of relation attribute contains sub-components like street, city, zip?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Composite attribute"
+      },
+      {
+        "id": "B",
+        "text": "Multivalued attribute"
+      },
+      {
+        "id": "C",
+        "text": "Derived attribute"
+      },
+      {
+        "id": "D",
+        "text": "Stored attribute"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO5",
+    "topicId": "t7",
+    "bloom": "evaluate",
+    "difficulty": 5
+  },
+  {
+    "id": "eval-15",
+    "stem": "Which isolation level prevents dirty reads but allows non-repeatable reads?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Read Committed"
+      },
+      {
+        "id": "B",
+        "text": "Read Uncommitted"
+      },
+      {
+        "id": "C",
+        "text": "Repeatable Read"
+      },
+      {
+        "id": "D",
+        "text": "Serializable"
+      }
+    ],
+    "key": "B",
+    "actual_correct_answer": "A",
+    "is_wrong_key": true,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO1",
+    "topicId": "t8",
+    "bloom": "remember",
+    "difficulty": 1
+  },
+  {
+    "id": "eval-16",
+    "stem": "In relational schema design, a foreign key must reference what?",
+    "options": [
+      {
+        "id": "A",
+        "text": "A primary key or unique key in the target table"
+      },
+      {
+        "id": "B",
+        "text": "Any arbitrary column"
+      },
+      {
+        "id": "C",
+        "text": "An index"
+      },
+      {
+        "id": "D",
+        "text": "A view"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO2",
+    "topicId": "t1",
+    "bloom": "understand",
+    "difficulty": 2
+  },
+  {
+    "id": "eval-17",
+    "stem": "What happens to B+ tree height as table size scales by fan-out factor F?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Increases logarithmically"
+      },
+      {
+        "id": "B",
+        "text": "Increases linearly"
+      },
+      {
+        "id": "C",
+        "text": "Remains constant"
+      },
+      {
+        "id": "D",
+        "text": "Increases exponentially"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO3",
+    "topicId": "t2",
+    "bloom": "apply",
+    "difficulty": 3
+  },
+  {
+    "id": "eval-18",
+    "stem": "What technique handles uncommitted transaction aborts without cascading rollbacks?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Strict Two-Phase Locking"
+      },
+      {
+        "id": "B",
+        "text": "Timestamp ordering"
+      },
+      {
+        "id": "C",
+        "text": "Optimistic concurrency"
+      },
+      {
+        "id": "D",
+        "text": "Multiversioning"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO4",
+    "topicId": "t3",
+    "bloom": "analyse",
+    "difficulty": 4
+  },
+  {
+    "id": "eval-19",
+    "stem": "Which relational algebra operation corresponds to vertical partitioning?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Projection (pi)"
+      },
+      {
+        "id": "B",
+        "text": "Selection"
+      },
+      {
+        "id": "C",
+        "text": "Cartesian product"
+      },
+      {
+        "id": "D",
+        "text": "Rename"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO5",
+    "topicId": "t4",
+    "bloom": "evaluate",
+    "difficulty": 5
+  },
+  {
+    "id": "eval-20",
+    "stem": "What property ensures committed database transactions survive system crashes?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Durability"
+      },
+      {
+        "id": "B",
+        "text": "Atomicity"
+      },
+      {
+        "id": "C",
+        "text": "Consistency"
+      },
+      {
+        "id": "D",
+        "text": "Isolation"
+      }
+    ],
+    "key": "B",
+    "actual_correct_answer": "A",
+    "is_wrong_key": true,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO1",
+    "topicId": "t5",
+    "bloom": "remember",
+    "difficulty": 1
+  },
+  {
+    "id": "eval-21",
+    "stem": "Which normal form deals with multivalued dependencies?",
+    "options": [
+      {
+        "id": "A",
+        "text": "4NF"
+      },
+      {
+        "id": "B",
+        "text": "3NF"
+      },
+      {
+        "id": "C",
+        "text": "BCNF"
+      },
+      {
+        "id": "D",
+        "text": "2NF"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO2",
+    "topicId": "t6",
+    "bloom": "understand",
+    "difficulty": 2
+  },
+  {
+    "id": "eval-22",
+    "stem": "What SQL constraint enforces uniqueness across columns while permitting a single NULL in some engines?",
+    "options": [
+      {
+        "id": "A",
+        "text": "UNIQUE"
+      },
+      {
+        "id": "B",
+        "text": "PRIMARY KEY"
+      },
+      {
+        "id": "C",
+        "text": "CHECK"
+      },
+      {
+        "id": "D",
+        "text": "NOT NULL"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO3",
+    "topicId": "t7",
+    "bloom": "apply",
+    "difficulty": 3
+  },
+  {
+    "id": "eval-23",
+    "stem": "Which disk file structure stores records in arrival order without sorting?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Heap file"
+      },
+      {
+        "id": "B",
+        "text": "Sorted file"
+      },
+      {
+        "id": "C",
+        "text": "B-tree index"
+      },
+      {
+        "id": "D",
+        "text": "Hash cluster"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO4",
+    "topicId": "t8",
+    "bloom": "analyse",
+    "difficulty": 4
+  },
+  {
+    "id": "eval-24",
+    "stem": "What is an index called when search key ordering matches physical disk order?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Clustered index"
+      },
+      {
+        "id": "B",
+        "text": "Unclustered index"
+      },
+      {
+        "id": "C",
+        "text": "Secondary index"
+      },
+      {
+        "id": "D",
+        "text": "Dense index"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO5",
+    "topicId": "t1",
+    "bloom": "evaluate",
+    "difficulty": 5
+  },
+  {
+    "id": "eval-25",
+    "stem": "In SQL, which set operator removes duplicates between two query results?",
+    "options": [
+      {
+        "id": "A",
+        "text": "UNION"
+      },
+      {
+        "id": "B",
+        "text": "UNION ALL"
+      },
+      {
+        "id": "C",
+        "text": "CROSS JOIN"
+      },
+      {
+        "id": "D",
+        "text": "INTERSECT ALL"
+      }
+    ],
+    "key": "B",
+    "actual_correct_answer": "A",
+    "is_wrong_key": true,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO1",
+    "topicId": "t2",
+    "bloom": "remember",
+    "difficulty": 1
+  },
+  {
+    "id": "eval-26",
+    "stem": "Which recovery phase in ARIES scans log forward from checkpoint to reconstruct state?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Redo phase"
+      },
+      {
+        "id": "B",
+        "text": "Analysis phase"
+      },
+      {
+        "id": "C",
+        "text": "Undo phase"
+      },
+      {
+        "id": "D",
+        "text": "Cleanup phase"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO2",
+    "topicId": "t3",
+    "bloom": "understand",
+    "difficulty": 2
+  },
+  {
+    "id": "eval-27",
+    "stem": "What dependency states that functional dependency X -> Y holds if Y is a subset of X?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Trivial dependency"
+      },
+      {
+        "id": "B",
+        "text": "Non-trivial dependency"
+      },
+      {
+        "id": "C",
+        "text": "Transitive dependency"
+      },
+      {
+        "id": "D",
+        "text": "Partial dependency"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO3",
+    "topicId": "t4",
+    "bloom": "apply",
+    "difficulty": 3
+  },
+  {
+    "id": "eval-28",
+    "stem": "Which join type combines every row in table A with every row in table B?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cross join (Cartesian product)"
+      },
+      {
+        "id": "B",
+        "text": "Inner join"
+      },
+      {
+        "id": "C",
+        "text": "Natural join"
+      },
+      {
+        "id": "D",
+        "text": "Left join"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO4",
+    "topicId": "t5",
+    "bloom": "analyse",
+    "difficulty": 4
+  },
+  {
+    "id": "eval-29",
+    "stem": "What lock mode allows concurrent reading but prevents concurrent writing?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Shared lock (S)"
+      },
+      {
+        "id": "B",
+        "text": "Exclusive lock (X)"
+      },
+      {
+        "id": "C",
+        "text": "Intent lock (IS)"
+      },
+      {
+        "id": "D",
+        "text": "Update lock (U)"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO5",
+    "topicId": "t6",
+    "bloom": "evaluate",
+    "difficulty": 5
+  },
+  {
+    "id": "eval-30",
+    "stem": "Which anomaly involves a transaction seeing extra newly inserted rows matching a predicate?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Phantom read"
+      },
+      {
+        "id": "B",
+        "text": "Dirty read"
+      },
+      {
+        "id": "C",
+        "text": "Non-repeatable read"
+      },
+      {
+        "id": "D",
+        "text": "Lost update"
+      }
+    ],
+    "key": "B",
+    "actual_correct_answer": "A",
+    "is_wrong_key": true,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO1",
+    "topicId": "t7",
+    "bloom": "remember",
+    "difficulty": 1
+  },
+  {
+    "id": "eval-31",
+    "stem": "In an ER model, how is a derived attribute represented?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Dashed ellipse"
+      },
+      {
+        "id": "B",
+        "text": "Double rectangle"
+      },
+      {
+        "id": "C",
+        "text": "Solid ellipse"
+      },
+      {
+        "id": "D",
+        "text": "Diamond"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO2",
+    "topicId": "t8",
+    "bloom": "understand",
+    "difficulty": 2
+  },
+  {
+    "id": "eval-32",
+    "stem": "What is the minimum number of keys in a non-root B+ tree node of order d?",
+    "options": [
+      {
+        "id": "A",
+        "text": "d"
+      },
+      {
+        "id": "B",
+        "text": "2d"
+      },
+      {
+        "id": "C",
+        "text": "1"
+      },
+      {
+        "id": "D",
+        "text": "d/2"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO3",
+    "topicId": "t1",
+    "bloom": "apply",
+    "difficulty": 3
+  },
+  {
+    "id": "eval-33",
+    "stem": "Which normal form requires eliminating partial dependencies on composite candidate keys?",
+    "options": [
+      {
+        "id": "A",
+        "text": "2NF"
+      },
+      {
+        "id": "B",
+        "text": "1NF"
+      },
+      {
+        "id": "C",
+        "text": "3NF"
+      },
+      {
+        "id": "D",
+        "text": "BCNF"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO4",
+    "topicId": "t2",
+    "bloom": "analyse",
+    "difficulty": 4
+  },
+  {
+    "id": "eval-34",
+    "stem": "What SQL statement modifies the schema of an existing table?",
+    "options": [
+      {
+        "id": "A",
+        "text": "ALTER TABLE"
+      },
+      {
+        "id": "B",
+        "text": "UPDATE"
+      },
+      {
+        "id": "C",
+        "text": "MODIFY TABLE"
+      },
+      {
+        "id": "D",
+        "text": "CHANGE TABLE"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO5",
+    "topicId": "t3",
+    "bloom": "evaluate",
+    "difficulty": 5
+  },
+  {
+    "id": "eval-35",
+    "stem": "Which component of DBMS translates SQL text into an optimized execution plan?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Query optimizer"
+      },
+      {
+        "id": "B",
+        "text": "Storage manager"
+      },
+      {
+        "id": "C",
+        "text": "Buffer manager"
+      },
+      {
+        "id": "D",
+        "text": "Lock manager"
+      }
+    ],
+    "key": "B",
+    "actual_correct_answer": "A",
+    "is_wrong_key": true,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO1",
+    "topicId": "t4",
+    "bloom": "remember",
+    "difficulty": 1
+  },
+  {
+    "id": "eval-36",
+    "stem": "What is a schedule called if its transactions execute sequentially without interleaving?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Serial schedule"
+      },
+      {
+        "id": "B",
+        "text": "Serializable schedule"
+      },
+      {
+        "id": "C",
+        "text": "Recoverable schedule"
+      },
+      {
+        "id": "D",
+        "text": "Strict schedule"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO2",
+    "topicId": "t5",
+    "bloom": "understand",
+    "difficulty": 2
+  },
+  {
+    "id": "eval-37",
+    "stem": "What is the purpose of database checkpointing?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Limit the amount of log that must be replayed during crash recovery"
+      },
+      {
+        "id": "B",
+        "text": "Delete old tables"
+      },
+      {
+        "id": "C",
+        "text": "Free memory caches"
+      },
+      {
+        "id": "D",
+        "text": "Rebuild indexes"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO3",
+    "topicId": "t6",
+    "bloom": "apply",
+    "difficulty": 3
+  },
+  {
+    "id": "eval-38",
+    "stem": "Which SQL predicate checks if a subquery returns at least one row?",
+    "options": [
+      {
+        "id": "A",
+        "text": "EXISTS"
+      },
+      {
+        "id": "B",
+        "text": "IN"
+      },
+      {
+        "id": "C",
+        "text": "ANY"
+      },
+      {
+        "id": "D",
+        "text": "ALL"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO4",
+    "topicId": "t7",
+    "bloom": "analyse",
+    "difficulty": 4
+  },
+  {
+    "id": "eval-39",
+    "stem": "In relational model, what is a row called?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Tuple"
+      },
+      {
+        "id": "B",
+        "text": "Attribute"
+      },
+      {
+        "id": "C",
+        "text": "Domain"
+      },
+      {
+        "id": "D",
+        "text": "Relation"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO5",
+    "topicId": "t8",
+    "bloom": "evaluate",
+    "difficulty": 5
+  },
+  {
+    "id": "eval-40",
+    "stem": "What is a column header called in relational terminology?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Attribute name"
+      },
+      {
+        "id": "B",
+        "text": "Tuple name"
+      },
+      {
+        "id": "C",
+        "text": "Key domain"
+      },
+      {
+        "id": "D",
+        "text": "Entity"
+      }
+    ],
+    "key": "B",
+    "actual_correct_answer": "A",
+    "is_wrong_key": true,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO1",
+    "topicId": "t1",
+    "bloom": "remember",
+    "difficulty": 1
+  },
+  {
+    "id": "eval-41",
+    "stem": "Which join operator keeps all rows from both tables, filling mismatches with NULL?",
+    "options": [
+      {
+        "id": "A",
+        "text": "FULL OUTER JOIN"
+      },
+      {
+        "id": "B",
+        "text": "INNER JOIN"
+      },
+      {
+        "id": "C",
+        "text": "NATURAL JOIN"
+      },
+      {
+        "id": "D",
+        "text": "SEMI JOIN"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO2",
+    "topicId": "t2",
+    "bloom": "understand",
+    "difficulty": 2
+  },
+  {
+    "id": "eval-42",
+    "stem": "What locking granularity locks an entire disk block containing multiple rows?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Page-level locking"
+      },
+      {
+        "id": "B",
+        "text": "Row-level locking"
+      },
+      {
+        "id": "C",
+        "text": "Table-level locking"
+      },
+      {
+        "id": "D",
+        "text": "Database-level locking"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO3",
+    "topicId": "t3",
+    "bloom": "apply",
+    "difficulty": 3
+  },
+  {
+    "id": "eval-43",
+    "stem": "What is a minimal set of functional dependencies equivalent to F called?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Minimal cover (canonical cover)"
+      },
+      {
+        "id": "B",
+        "text": "Closure"
+      },
+      {
+        "id": "C",
+        "text": "Decomposition"
+      },
+      {
+        "id": "D",
+        "text": "Projection"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO4",
+    "topicId": "t4",
+    "bloom": "analyse",
+    "difficulty": 4
+  },
+  {
+    "id": "eval-44",
+    "stem": "Which SQL aggregate ignores NULL values except when counting all rows?",
+    "options": [
+      {
+        "id": "A",
+        "text": "AVG"
+      },
+      {
+        "id": "B",
+        "text": "COUNT(*)"
+      },
+      {
+        "id": "C",
+        "text": "DISTINCT"
+      },
+      {
+        "id": "D",
+        "text": "GROUPING"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO5",
+    "topicId": "t5",
+    "bloom": "evaluate",
+    "difficulty": 5
+  },
+  {
+    "id": "eval-45",
+    "stem": "In BCNF, for every non-trivial functional dependency X -> Y, what must X be?",
+    "options": [
+      {
+        "id": "A",
+        "text": "A superkey"
+      },
+      {
+        "id": "B",
+        "text": "A prime attribute"
+      },
+      {
+        "id": "C",
+        "text": "A candidate key"
+      },
+      {
+        "id": "D",
+        "text": "A foreign key"
+      }
+    ],
+    "key": "B",
+    "actual_correct_answer": "A",
+    "is_wrong_key": true,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO1",
+    "topicId": "t6",
+    "bloom": "remember",
+    "difficulty": 1
+  },
+  {
+    "id": "eval-46",
+    "stem": "What mechanism caches disk pages in RAM to accelerate read/write access?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Buffer pool manager"
+      },
+      {
+        "id": "B",
+        "text": "Transaction manager"
+      },
+      {
+        "id": "C",
+        "text": "Lock table"
+      },
+      {
+        "id": "D",
+        "text": "WAL daemon"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO2",
+    "topicId": "t7",
+    "bloom": "understand",
+    "difficulty": 2
+  },
+  {
+    "id": "eval-47",
+    "stem": "What is a transaction schedule called if it avoids cascading aborts?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cascadeless schedule"
+      },
+      {
+        "id": "B",
+        "text": "Serial schedule"
+      },
+      {
+        "id": "C",
+        "text": "View serializable"
+      },
+      {
+        "id": "D",
+        "text": "Strict schedule"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO3",
+    "topicId": "t8",
+    "bloom": "apply",
+    "difficulty": 3
+  },
+  {
+    "id": "eval-48",
+    "stem": "Which SQL operator matches strings using wildcard patterns?",
+    "options": [
+      {
+        "id": "A",
+        "text": "LIKE"
+      },
+      {
+        "id": "B",
+        "text": "IN"
+      },
+      {
+        "id": "C",
+        "text": "BETWEEN"
+      },
+      {
+        "id": "D",
+        "text": "MATCH"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO4",
+    "topicId": "t1",
+    "bloom": "analyse",
+    "difficulty": 4
+  },
+  {
+    "id": "eval-49",
+    "stem": "What algorithm uses analysis, redo, and undo passes for database crash recovery?",
+    "options": [
+      {
+        "id": "A",
+        "text": "ARIES"
+      },
+      {
+        "id": "B",
+        "text": "Two-Phase Commit"
+      },
+      {
+        "id": "C",
+        "text": "Paxos"
+      },
+      {
+        "id": "D",
+        "text": "Raft"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO5",
+    "topicId": "t2",
+    "bloom": "evaluate",
+    "difficulty": 5
+  },
+  {
+    "id": "eval-50",
+    "stem": "What is an attribute called if it is part of at least one candidate key?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Prime attribute"
+      },
+      {
+        "id": "B",
+        "text": "Non-prime attribute"
+      },
+      {
+        "id": "C",
+        "text": "Foreign attribute"
+      },
+      {
+        "id": "D",
+        "text": "Super attribute"
+      }
+    ],
+    "key": "B",
+    "actual_correct_answer": "A",
+    "is_wrong_key": true,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO1",
+    "topicId": "t3",
+    "bloom": "remember",
+    "difficulty": 1
+  },
+  {
+    "id": "eval-51",
+    "stem": "Which type of index contains an entry for every search key value in the table?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Dense index"
+      },
+      {
+        "id": "B",
+        "text": "Sparse index"
+      },
+      {
+        "id": "C",
+        "text": "Bitmap index"
+      },
+      {
+        "id": "D",
+        "text": "Hash index"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO2",
+    "topicId": "t4",
+    "bloom": "understand",
+    "difficulty": 2
+  },
+  {
+    "id": "eval-52",
+    "stem": "What locking protocol requires holding all locks until the end of transaction?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Strict 2PL"
+      },
+      {
+        "id": "B",
+        "text": "Basic 2PL"
+      },
+      {
+        "id": "C",
+        "text": "Conservative 2PL"
+      },
+      {
+        "id": "D",
+        "text": "Graph locking"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO3",
+    "topicId": "t5",
+    "bloom": "apply",
+    "difficulty": 3
+  },
+  {
+    "id": "eval-53",
+    "stem": "What SQL clause limits the maximum number of rows returned in PostgreSQL/MySQL?",
+    "options": [
+      {
+        "id": "A",
+        "text": "LIMIT"
+      },
+      {
+        "id": "B",
+        "text": "TOP"
+      },
+      {
+        "id": "C",
+        "text": "FETCH FIRST"
+      },
+      {
+        "id": "D",
+        "text": "SAMPLE"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO4",
+    "topicId": "t6",
+    "bloom": "analyse",
+    "difficulty": 4
+  },
+  {
+    "id": "eval-54",
+    "stem": "What relational algebra operation selects common tuples present in both relations?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Intersection"
+      },
+      {
+        "id": "B",
+        "text": "Union"
+      },
+      {
+        "id": "C",
+        "text": "Difference"
+      },
+      {
+        "id": "D",
+        "text": "Division"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": false,
+    "duplicate_of": null,
+    "cloId": "CLO5",
+    "topicId": "t7",
+    "bloom": "evaluate",
+    "difficulty": 5
+  },
+  {
+    "id": "eval-55",
+    "stem": "Which component in an ER diagram represents a weak entity set?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Rectangle"
+      },
+      {
+        "id": "B",
+        "text": "Double rectangle"
+      },
+      {
+        "id": "C",
+        "text": "Diamond"
+      },
+      {
+        "id": "D",
+        "text": "Ellipse"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "B",
+    "is_wrong_key": true,
+    "is_duplicate": true,
+    "duplicate_of": "eval-1",
+    "cloId": "CLO1",
+    "topicId": "t8",
+    "bloom": "remember",
+    "difficulty": 1
+  },
+  {
+    "id": "eval-56",
+    "stem": "In relational algebra, which operator filters rows based on a selection predicate condition?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Projection"
+      },
+      {
+        "id": "B",
+        "text": "Selection (sigma)"
+      },
+      {
+        "id": "C",
+        "text": "Join"
+      },
+      {
+        "id": "D",
+        "text": "Division"
+      }
+    ],
+    "key": "B",
+    "actual_correct_answer": "B",
+    "is_wrong_key": false,
+    "is_duplicate": true,
+    "duplicate_of": "eval-2",
+    "cloId": "CLO2",
+    "topicId": "t1",
+    "bloom": "understand",
+    "difficulty": 2
+  },
+  {
+    "id": "eval-57",
+    "stem": "Which SQL join preserves all rows from the left table and matched rows from the right table?",
+    "options": [
+      {
+        "id": "A",
+        "text": "INNER JOIN"
+      },
+      {
+        "id": "B",
+        "text": "LEFT OUTER JOIN"
+      },
+      {
+        "id": "C",
+        "text": "RIGHT OUTER JOIN"
+      },
+      {
+        "id": "D",
+        "text": "CROSS JOIN"
+      }
+    ],
+    "key": "B",
+    "actual_correct_answer": "B",
+    "is_wrong_key": false,
+    "is_duplicate": true,
+    "duplicate_of": "eval-3",
+    "cloId": "CLO3",
+    "topicId": "t2",
+    "bloom": "apply",
+    "difficulty": 3
+  },
+  {
+    "id": "eval-58",
+    "stem": "What does the attribute closure of a set of attributes determine in relational database design?",
+    "options": [
+      {
+        "id": "A",
+        "text": "All attributes functionally determined by the set"
+      },
+      {
+        "id": "B",
+        "text": "Only prime attributes"
+      },
+      {
+        "id": "C",
+        "text": "Foreign keys"
+      },
+      {
+        "id": "D",
+        "text": "Indexes"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": true,
+    "duplicate_of": "eval-4",
+    "cloId": "CLO4",
+    "topicId": "t3",
+    "bloom": "analyse",
+    "difficulty": 4
+  },
+  {
+    "id": "eval-59",
+    "stem": "Under Two-Phase Locking (2PL), after a transaction releases a lock, what action is prohibited?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Acquire any new locks"
+      },
+      {
+        "id": "B",
+        "text": "Commit"
+      },
+      {
+        "id": "C",
+        "text": "Abort"
+      },
+      {
+        "id": "D",
+        "text": "Read local variables"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "A",
+    "is_wrong_key": false,
+    "is_duplicate": true,
+    "duplicate_of": "eval-5",
+    "cloId": "CLO5",
+    "topicId": "t4",
+    "bloom": "evaluate",
+    "difficulty": 5
+  },
+  {
+    "id": "eval-60",
+    "stem": "In a B+ tree index structure, where do all data record pointers reside?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Root node"
+      },
+      {
+        "id": "B",
+        "text": "Leaf nodes"
+      },
+      {
+        "id": "C",
+        "text": "All nodes"
+      },
+      {
+        "id": "D",
+        "text": "Internal nodes only"
+      }
+    ],
+    "key": "A",
+    "actual_correct_answer": "B",
+    "is_wrong_key": true,
+    "is_duplicate": true,
+    "duplicate_of": "eval-6",
+    "cloId": "CLO1",
+    "topicId": "t5",
+    "bloom": "remember",
+    "difficulty": 1
+  }
+]

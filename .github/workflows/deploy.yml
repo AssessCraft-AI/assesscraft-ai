@@ -1,0 +1,51 @@
+name: Deploy (manual)
+
+# Manual, gated deployment to Cloud Run. Authenticates with Workload Identity Federation (no JSON keys).
+# One-time setup: create a WIF pool/provider and a deployer service account, then set the repository
+# variables/secrets listed below. Use the `staging` environment first; protect `production` with reviewers.
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: GitHub environment (holds that environment's variables/secrets)
+        type: choice
+        options: [staging, production]
+        default: staging
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  checks:
+    uses: ./.github/workflows/ci.yml
+
+  deploy:
+    needs: checks
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    env:
+      GCP_PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+      GCP_REGION: ${{ vars.GCP_REGION || 'asia-southeast1' }}
+      LLM_BACKEND: ${{ vars.LLM_BACKEND || 'openrouter' }}
+      ALLOWED_EMAIL_DOMAINS: ${{ vars.ALLOWED_EMAIL_DOMAINS }}
+      NEXT_PUBLIC_FIREBASE_API_KEY: ${{ vars.NEXT_PUBLIC_FIREBASE_API_KEY }}
+      NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{ vars.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN }}
+      NEXT_PUBLIC_FIREBASE_PROJECT_ID: ${{ vars.NEXT_PUBLIC_FIREBASE_PROJECT_ID }}
+      NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: ${{ vars.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET }}
+      NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: ${{ vars.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID }}
+      NEXT_PUBLIC_FIREBASE_APP_ID: ${{ vars.NEXT_PUBLIC_FIREBASE_APP_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_DEPLOYER_SERVICE_ACCOUNT }}
+      - uses: google-github-actions/setup-gcloud@v2
+      - run: bash infra/deploy_backend.sh
+      - run: bash infra/deploy_frontend.sh
+      - name: Smoke test
+        run: |
+          export API_URL=$(gcloud run services describe assesscraft-api --region "$GCP_REGION" --format='value(status.url)')
+          export WEB_URL=$(gcloud run services describe assesscraft-web --region "$GCP_REGION" --format='value(status.url)')
+          bash infra/smoke_test.sh

@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Node
+node_modules/
+.next/
+*.tsbuildinfo
+
+# Environment variables
+.env*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE & Editors
+.vscode/
+.idea/
+
+# Python virtualenv
+.venv/
+venv/
+
+# Graphify cache
+graphify-out/cache/
+
+#firebase
+firebase.txt
+
+
+# Local secrets
+.env
+
+# Service account keys
+*firebase-adminsdk*.json

@@ -1,0 +1,62 @@
+[
+  {
+    "name": "event_id",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "Unique identifier for the telemetry event"
+  },
+  {
+    "name": "ts",
+    "type": "TIMESTAMP",
+    "mode": "REQUIRED",
+    "description": "Timestamp of the event occurrence"
+  },
+  {
+    "name": "user_role",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Role of the actor: lecturer, moderator, qa, or system"
+  },
+  {
+    "name": "assessment_id",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Associated assessment identifier"
+  },
+  {
+    "name": "stage",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Workflow stage: blueprint, pool, review, assembly, moderation, export"
+  },
+  {
+    "name": "event_type",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "Category of event: stage_start, stage_complete, flag_raised, flag_resolved, item_edited, paper_approved"
+  },
+  {
+    "name": "flag_type",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Type of review flag if applicable: key_mismatch, ambiguous, item_flaw, duplicate_past, duplicate_pool, misaligned_clo, bloom_doubt"
+  },
+  {
+    "name": "resolution",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Resolution of flag: accepted, dismissed, edited"
+  },
+  {
+    "name": "duration_ms",
+    "type": "INT64",
+    "mode": "NULLABLE",
+    "description": "Execution duration in milliseconds"
+  },
+  {
+    "name": "meta",
+    "type": "JSON",
+    "mode": "NULLABLE",
+    "description": "Arbitrary metadata payload for the event"
+  }
+]

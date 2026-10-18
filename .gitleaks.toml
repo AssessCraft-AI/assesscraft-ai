@@ -1,0 +1,10 @@
+title = "AssessCraft Gitleaks Configuration"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Allowlist graphify knowledge graph artifacts and caches"
+paths = [
+    '''graphify-out/.*''',
+]
